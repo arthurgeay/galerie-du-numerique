@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['https://galerie-numerique.herokuapp.com']
 
+CSRF_TRUSTED_ORIGINS = ['https://galerie-numerique.herokuapp.com']
+
 
 # Application definition
 
