@@ -13,5 +13,7 @@
             {% csrf_token %}
             <button type="submit">Se connecter</button>
         </form>
+
+        <p><a href="{% url 'signup'%}">Vous n'avez aucun compte ? Inscrivez-vous</a></p>
     </article>
 {% endblock content %}
