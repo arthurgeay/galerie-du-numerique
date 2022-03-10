@@ -3,3 +3,5 @@ artwork_gallery/db.sqlite3
 venv/
 .idea/
 .env
+*.pyc
+__pycache__
