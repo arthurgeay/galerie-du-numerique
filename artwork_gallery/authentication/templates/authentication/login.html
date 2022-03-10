@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <article>
+        <hgroup>
+            <h1>Connexion</h1>
+            <h2>Votez pour votre oeuvre favorite !</h2>
+        </hgroup>
+
+        <p class="alert">{{ message }}</p>
+        <form method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit">Se connecter</button>
+        </form>
+    </article>
+{% endblock content %}
