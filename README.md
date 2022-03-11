@@ -5,45 +5,49 @@ Admin : https://galerie-numerique.herokuapp.com/admin
 Login : https://galerie-numerique.herokuapp.com/login
 
 
+## Installation
 
-
-Créer l'environnement virtuel
-```python
+```sh
+# Créer l'environnement virtuel
 python -m venv env
-```
 
-Rentrer dans l'environnement virtuel
-- Linux/MacOS
-```python
+# Rentrer dans l'environnement virtuel
+# Linux/MacOS :
 source env/bin/activate
-```
 
-- Windows
-```python
+# Windows
 env/Scripts/Activate.ps1
-```
 
-Installer les dépendances
-```python
+# Installer les dépendances
  pip install -r requirements.txt
-```
 
-Se déplacer dans le dossier du projet
-```python
- cd artwork_gallery
-```
+# Se déplacer dans le dossier du projet
+cd artwork_gallery
 
-Initialiser la base de données
-```python
+# Base de données - Ce projet utilise PostgreSQL
+
+# Vous pouvez utiliser Docker avec docker-compose.
+docker-compose up -d
+
+# OU si vous n'avez pas Docker, créez une nouvelle base de donnée
+CREATE DATABASE galerie_numerique; 
+
+# Créer un fichier de variable d'environnement et remplir les différentes valeurs en fonction de vos réglages
+cp .env.example .env
+
+# Example du fichier .env si vous utilisez docker-compose
+DB_HOST=localhost  
+DB_NAME=postgres  
+DB_USER=postgres  
+DB_PASSWORD=root  
+DB_PORT=5432  
+DEBUG=True
+
+#Exécuter les migrations
 python manage.py migrate 
-```
 
-Lancer le projet Django
-```python
+# Lancer le projet Django
 python manage.py runserver 
-```
 
-Pour créer un administrateur
-```python
+# Pour créer un administrateur
 python manage.py createsuperuser 
-```
