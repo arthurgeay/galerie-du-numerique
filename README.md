@@ -48,8 +48,14 @@ DEBUG=True
 #Exécuter les migrations
 python manage.py migrate 
 
-# Lancer le projet Django
-python manage.py runserver 
-
 # Pour créer un administrateur
 python manage.py createsuperuser 
+```
+
+## Utilisation
+```
+# Lancer le projet Django
+python manage.py runserver 
+```
+
+Par défaut le serveur tourne sur le port 8000.
