@@ -59,3 +59,20 @@ python manage.py runserver
 ```
 
 Par défaut le serveur tourne sur le port 8000.
+
+
+## Linter
+
+Le linter ``Black`` est lancé à chaque PR et merge sur la branche `master`.
+
+Pour pouvoir corriger les erreurs levées (CI/CD)
+
+``` 
+black .
+```
+
+Pour lancer l'analyseur manuellement
+```sh
+cd artwork_gallery  
+black --check --verbose .
+```
