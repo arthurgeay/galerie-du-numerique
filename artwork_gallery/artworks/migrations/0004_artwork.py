@@ -7,23 +7,44 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('artworks', '0003_alter_artist_birthday_alter_artist_deathday_and_more'),
+        ("artworks", "0003_alter_artist_birthday_alter_artist_deathday_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Artwork',
+            name="Artwork",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=255)),
-                ('description', models.TextField()),
-                ('image', models.TextField()),
-                ('released_at', models.CharField(max_length=4)),
-                ('width', models.CharField(max_length=10)),
-                ('height', models.CharField(max_length=10)),
-                ('location', models.CharField(max_length=255)),
-                ('artist', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='artworks.artist')),
-                ('category', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='artworks.category')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=255)),
+                ("description", models.TextField()),
+                ("image", models.TextField()),
+                ("released_at", models.CharField(max_length=4)),
+                ("width", models.CharField(max_length=10)),
+                ("height", models.CharField(max_length=10)),
+                ("location", models.CharField(max_length=255)),
+                (
+                    "artist",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="artworks.artist",
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="artworks.category",
+                    ),
+                ),
             ],
         ),
     ]

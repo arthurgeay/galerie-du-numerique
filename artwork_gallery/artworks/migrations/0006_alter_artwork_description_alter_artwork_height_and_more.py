@@ -6,38 +6,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('artworks', '0005_alter_artwork_description_alter_artwork_height_and_more'),
+        ("artworks", "0005_alter_artwork_description_alter_artwork_height_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='artwork',
-            name='description',
+            model_name="artwork",
+            name="description",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='artwork',
-            name='height',
+            model_name="artwork",
+            name="height",
             field=models.CharField(blank=True, max_length=10, null=True),
         ),
         migrations.AlterField(
-            model_name='artwork',
-            name='image',
+            model_name="artwork",
+            name="image",
             field=models.TextField(blank=True, null=True),
         ),
         migrations.AlterField(
-            model_name='artwork',
-            name='location',
+            model_name="artwork",
+            name="location",
             field=models.CharField(blank=True, max_length=255, null=True),
         ),
         migrations.AlterField(
-            model_name='artwork',
-            name='released_at',
+            model_name="artwork",
+            name="released_at",
             field=models.CharField(blank=True, max_length=4, null=True),
         ),
         migrations.AlterField(
-            model_name='artwork',
-            name='width',
+            model_name="artwork",
+            name="width",
             field=models.CharField(blank=True, max_length=10, null=True),
         ),
     ]
