@@ -117,6 +117,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Redirect URL default for login required
+LOGIN_URL = "login"
+
 
 # Email
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
