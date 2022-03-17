@@ -2,36 +2,40 @@
 
 {% block links %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
 {% endblock links %}
 
 {% block content %}
-<h1>Galerie</h1>
-{% include "presentation.html" %}
-<div class="separator"></div>
-{% if artworks|length > 0 %}
-    <div class="controls">
-        <button id="sort">Trier</button>
-        <button id="filter">Filtrer</button>
-    </div>
-{% endif %}
+    <h1>Galerie</h1>
+    {% include "presentation.html" %}
+    <div class="separator"></div>
+    {% if artworks|length > 0 %}
+        <div class="controls">
+            <button id="sort">Trier</button>
+            <button id="filter">Filtrer</button>
+        </div>
+    {% endif %}
 
-<div class="gallery">
-    <ul class="art-list">
-        {% for artwork in artworks %}
-            <li class="art-item">
-                <div class="art-item-image">
-                    <img src="{{ artwork.image|default:'https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb' }}" alt="">
-                </div>
-                <div class="art-item-infos">
-                    <p class="art-item-title">{{ artwork.title }}</p>
-                    <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
-                    <p class="art-item-author">{{ artwork.artist.name }}</p>
-                </div>
-            </li>
-        {% empty %}
-            <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="gallery">
+        <ul class="art-list">
+            {% for artwork in artworks %}
+                <li class="art-item">
+                    <div class="art-item-image">
+                        {% if artwork.image %}
+                            <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}" />
+                        {% else %}
+                            <img src="{% static 'images/404.png' %}" alt="Image introuvable" />
+                        {% endif %}
+                    </div>
+                    <div class="art-item-infos">
+                        <p class="art-item-title">{{ artwork.title }}</p>
+                        <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
+                        <p class="art-item-author">{{ artwork.artist.name }}</p>
+                    </div>
+                </li>
+            {% empty %}
+                <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}
