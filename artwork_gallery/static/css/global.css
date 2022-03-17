@@ -42,7 +42,11 @@
   --switch-checked-background-color: var(--primary);
 }
 
-/* Footer */
+a:active,
+a:hover,
+a:focus {
+  opacity: .7;
+}
 body > footer {
   padding: 1rem 0;
 }
