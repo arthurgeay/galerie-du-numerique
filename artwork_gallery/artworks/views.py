@@ -11,7 +11,6 @@ class ArtworkDetailView(DetailView):
         artist = Artist.objects.get(id=artwork.artist_id)
         category = Category.objects.get(id=artwork.category_id)
         context = {'artwork': artwork, 'artist': artist, 'category': category}
-        print(artist)
         return render(request, 'artworks/artwork_detail.html', context)
     
     
