@@ -33,11 +33,11 @@
             </div>
            
         </div>
-        <div style="margin-top: 2em">
+        <div class="img-author">
             {% if artist.image%}
             <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid">
             {% else %}
-            <img src="{% static 'images/404.png' %}" alt="404 image" class="img-fluid" style="height:300px; width: 300px;" >
+            <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error" >
             {% endif %}
             <h2>{{artist.name}}</h2>
             {% if artist.birthday and artist.deathday %}

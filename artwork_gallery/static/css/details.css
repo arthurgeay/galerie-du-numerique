@@ -1,3 +1,7 @@
-body {
-    background-color: red;
+.img-error{
+   height:300px; 
+   width: 300px;
+}
+.img-author{
+margin-top: 2em
 }
