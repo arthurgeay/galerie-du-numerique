@@ -9,7 +9,9 @@ class ArtworkDetailView(DetailView):
     
     def get(self, request, *args, **kwargs):
         artwork = get_object_or_404(Artwork, id=kwargs['id'])
-        context = {'artwork': artwork}
+        artist = artwork.artist_id
+        category = artwork.category_id
+        context = {'artwork': artwork, 'artist': artist, 'category': category}
         print(Artwork)
         return render(request, 'artworks/artwork_detail.html', context)
     

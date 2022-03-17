@@ -26,22 +26,31 @@
             {% endif %}
         </ul>
     </nav>
-    <main class="container-fluid">
+    <main class="container">
         {% block content %}
         <h3>{{artwork.title}}</h3>
         <div class="grid">
             <div>
+                <div class="grid"> 
                 <p>Date {{artwork.released_at}}</p>
                 <p>Taille {{artwork.width}}cm x {{artwork.heigth}}cm</p>
                 <p>Lieu {{artwork.location}}</p>
-                <div>
+                   <div>
                     <p>Voter pour cette oeuvre permettra de participer</p>
                 </div>
+                </div>
+             
+                 <div class="grid"> 
+                     <div> 
                 <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid">
-            </div>
-            <div>
+                </div>
+                 <div>
+                
                 <p>{{artwork.description}}</p>
             </div>
+            </div>
+            </div>
+           
         </div>
 
 
