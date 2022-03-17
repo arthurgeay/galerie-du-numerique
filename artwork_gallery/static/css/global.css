@@ -7,6 +7,7 @@
   --primary-focus: rgba(251, 140, 0, 0.125);
   --primary-inverse: #FFF;
   --color: #000;
+  --card: #f1f1f1;
 }
 
 /* Orange Dark scheme (Auto) */
@@ -18,6 +19,7 @@
     --primary-focus: rgba(251, 140, 0, 0.25);
     --primary-inverse: #FFF;
     --color: #FFF;
+    --card: #424242;
   }
 }
 
@@ -29,6 +31,7 @@
   --primary-focus: rgba(251, 140, 0, 0.25);
   --primary-inverse: #FFF;
   --color: #FFF;
+  --card: #424242;
 }
 
 /* Orange (Common styles) */
@@ -50,9 +53,6 @@ header {
   margin-bottom: 4rem;
 }
 
-header nav a {
-  color: var(--color);
-}
 
 header ul {
   margin-left: auto;
