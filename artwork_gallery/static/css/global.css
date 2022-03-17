@@ -2,30 +2,33 @@
 /* Can be forced with data-theme="light" */
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #fb8c00;
+  --primary: #f08D18;
   --primary-hover: #f57c00;
   --primary-focus: rgba(251, 140, 0, 0.125);
   --primary-inverse: #FFF;
+  --text: #000;
 }
 
 /* Orange Dark scheme (Auto) */
 /* Automatically enabled if user has Dark mode enabled */
 @media only screen and (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --primary: #fb8c00;
+    --primary: #f08D18;
     --primary-hover: #ff9800;
     --primary-focus: rgba(251, 140, 0, 0.25);
     --primary-inverse: #FFF;
+    --text: #FFF;
   }
 }
 
 /* Orange Dark scheme (Forced) */
 /* Enabled if forced with data-theme="dark" */
 [data-theme="dark"] {
-  --primary: #fb8c00;
+  --primary: #f08D18;
   --primary-hover: #ff9800;
   --primary-focus: rgba(251, 140, 0, 0.25);
   --primary-inverse: #FFF;
+  --text: #FFF;
 }
 
 /* Orange (Common styles) */
@@ -39,4 +42,33 @@
 /* Footer */
 body > footer {
   padding: 1rem 0;
+}
+
+header {
+  background-color: var(--primary);
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+header nav a {
+  color: var(--text);
+}
+
+header ul {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.logo {
+  max-width: 10rem;
+  object-fit: contain;
+  position: relative;
+  top: 2rem;
+  left: 1rem;
+}
+
+@media (min-width: 576px) {
+  .logo {
+    left: 2.5rem;
+  }
 }

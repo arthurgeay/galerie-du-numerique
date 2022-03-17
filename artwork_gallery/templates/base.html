@@ -19,10 +19,6 @@
         </div>   
         <nav class="container-fluid">
             <ul>
-                <li>
-                </li>
-            </ul>
-            <ul>
                 <li><a href="#">Accueil</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'logout'%}">Déconnexion</a></li>
