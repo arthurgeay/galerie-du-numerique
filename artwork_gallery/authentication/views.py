@@ -17,7 +17,7 @@ def login_page(request):
             )
             if user is not None:
                 login(request, user)
-                message = "Bonjour, {}! Vous êtes connecté".format(user.username)
+                return redirect('galery')
             else:
                 message = "Identifiants invalides"
     return render(
@@ -37,5 +37,5 @@ def signup_page(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("login")
+            return redirect('galery')
     return render(request, "authentication/signup.html", {"form": form})
