@@ -31,5 +31,22 @@
     <main class="container">
         {% block content %}{% endblock content %}
     </main>
+    <footer>
+        <div class="logo">
+            {% load static %}
+            <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+        </div>  
+        <ul>
+            <li>
+                <a href="">Mentions légales</a>
+            </li>
+            <li>
+                <a href="">Conditions d'utilisations</a>
+            </li>
+            <li>
+                <a href="">Politique de confidentialité</a>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>
