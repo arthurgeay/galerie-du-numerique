@@ -6,5 +6,26 @@
 {% endblock links %}
 
 {% block content %}
-<div class="viewing-box">Texte à remplacer</div>
+<h1>Galerie</h1>
+<!-- component: presentation of the physical gallery-->
+<div class="separator"></div>
+<div class="controls">
+    <button id="sort">Trier</button>
+    <button id="filter">Filtrer</button>
+</div>
+
+<div class="gallery">
+    <ul class="art-list">
+        <li class="art-item">
+            <div class="art-item-image">
+                <img src="" alt="">
+            </div>
+            <div class="art-item-infos">
+                <p class="art-item-title">Nom de l'oeuvre</p>
+                <p class="art-item-author">Auteur</p>
+                <p class="art-item-date">1984</p>
+            </div>
+        </li>
+    </ul>
+</div>
 {% endblock content %}

@@ -1,0 +1,5 @@
+.separator {
+    width: 30%;
+    height: 0.3rem;
+    background-color: var(--primary);
+}
