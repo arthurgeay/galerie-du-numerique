@@ -2,4 +2,36 @@
     width: 30%;
     height: 0.3rem;
     background-color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.controls {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.art-list {
+    padding: 0;
+}
+.art-item {
+    list-style-type: none;
+    background-color: var(--primary);
+}
+.art-item-infos {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    padding: 1rem;
+}
+
+.art-item-image {
+    min-height: 20rem;
+    background-color: lightgray;
+}
+.art-item-date {
+    align-self: flex-end;
+    text-align: right;
+}
+.art-item-author {
+    margin-bottom: 0;
 }

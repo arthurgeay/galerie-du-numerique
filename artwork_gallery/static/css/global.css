@@ -6,7 +6,7 @@
   --primary-hover: #f57c00;
   --primary-focus: rgba(251, 140, 0, 0.125);
   --primary-inverse: #FFF;
-  --text: #000;
+  --color: #000;
 }
 
 /* Orange Dark scheme (Auto) */
@@ -17,7 +17,7 @@
     --primary-hover: #ff9800;
     --primary-focus: rgba(251, 140, 0, 0.25);
     --primary-inverse: #FFF;
-    --text: #FFF;
+    --color: #FFF;
   }
 }
 
@@ -28,7 +28,7 @@
   --primary-hover: #ff9800;
   --primary-focus: rgba(251, 140, 0, 0.25);
   --primary-inverse: #FFF;
-  --text: #FFF;
+  --color: #FFF;
 }
 
 /* Orange (Common styles) */
@@ -51,7 +51,7 @@ header {
 }
 
 header nav a {
-  color: var(--text);
+  color: var(--color);
 }
 
 header ul {
