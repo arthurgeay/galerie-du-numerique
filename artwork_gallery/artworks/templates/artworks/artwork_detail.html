@@ -28,14 +28,15 @@
     </nav>
     <main class="container-fluid">
         {% block content %}
-        <h3>{{artwork.title}}</h3>
+        <h1>{{artwork.title}}</h1>
         <div class="grid">
             <div>
                 <p>Date {{artwork.released_at}}</p>
                 <p>Taille {{artwork.width}}cm x {{artwork.heigth}}cm</p>
                 <p>Lieu {{artwork.location}}</p>
                 <div>
-                    <p>Voter pour cette oeuvre permettra de participer</p>
+                    <p>Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !</p>
+                    <button>Voter</button>
                 </div>
                 <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid">
             </div>
@@ -43,15 +44,17 @@
                 <p>{{artwork.description}}</p>
             </div>
         </div>
+        <div>
+            <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid">
+            <h2>{{artist.name}}</h2>
+            <p>{{artist.birthday}} - {{artist.deathday}}</p>
+        </div>
 
 
 
 
         <p></p>{% endblock content %}
     </main>
-    <footer class="container-fluid">
-        <small>Built with <a href="https://picocss.com" class="secondary">Pico</a></small>
-    </footer>
 </body>
 
 </html>

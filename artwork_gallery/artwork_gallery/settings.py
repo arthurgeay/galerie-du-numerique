@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 
-import django_heroku
+# import django_heroku
 from pathlib import Path
 import environ
 
@@ -35,7 +35,7 @@ SECRET_KEY = os.getenv(
 
 DEBUG = env("DEBUG") == "True"
 
-ALLOWED_HOSTS = ["https://galerie-numerique.herokuapp.com"]
+ALLOWED_HOSTS = ["https://galerie-numerique.herokuapp.com", 'localhost', '127.0.0.1']
 
 CSRF_TRUSTED_ORIGINS = ["https://galerie-numerique.herokuapp.com"]
 
@@ -141,4 +141,4 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
