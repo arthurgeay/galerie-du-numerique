@@ -1,0 +1,57 @@
+<!doctype html>
+{% load static %}
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/pico.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/global.css' %}" />
+    <title>Galerie du numérique</title>
+</head>
+
+<body>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>La galerie du numérique</strong></li>
+        </ul>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+            {% else %}
+            <li><a href="{% url 'login' %}">Connexion</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main class="container-fluid">
+        {% block content %}
+        <h3>{{artwork.title}}</h3>
+        <div class="grid">
+            <div>
+                <p>Date {{artwork.released_at}}</p>
+                <p>Taille {{artwork.width}}cm x {{artwork.heigth}}cm</p>
+                <p>Lieu {{artwork.location}}</p>
+                <div>
+                    <p>Voter pour cette oeuvre permettra de participer</p>
+                </div>
+                <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid">
+            </div>
+            <div>
+                <p>{{artwork.description}}</p>
+            </div>
+        </div>
+
+
+
+
+        <p></p>{% endblock content %}
+    </main>
+    <footer class="container-fluid">
+        <small>Built with <a href="https://picocss.com" class="secondary">Pico</a></small>
+    </footer>
+</body>
+
+</html>
