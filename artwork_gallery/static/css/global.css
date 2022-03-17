@@ -71,8 +71,27 @@ header ul {
   left: 1rem;
 }
 
+.place {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-image {
+  margin-bottom: 1rem;
+}
+
 @media (min-width: 576px) {
   .logo {
     left: 2.5rem;
+  }
+}
+
+
+@media (min-width: 1000px) {
+  .place {
+    flex-direction: row;
+  }
+  .place-image {
+    margin-right: 2rem;
   }
 }
