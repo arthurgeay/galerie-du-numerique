@@ -15,10 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from artwork_gallery import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("authentication.urls")),
-    path("gallery", views.home, name="home"),
+    path("artworks/", include("artworks.urls")),
 ]
