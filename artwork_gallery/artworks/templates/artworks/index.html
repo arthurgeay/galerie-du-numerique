@@ -37,5 +37,15 @@
                 <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
             {% endfor %}
         </ul>
+
+    </div>
+     <div class="pagination">
+        {% if artworks.has_previous %}
+            <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a>
+         {% endif %}
+
+        {% if artworks.has_next %}
+            <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a>
+        {% endif %}
     </div>
 {% endblock content %}

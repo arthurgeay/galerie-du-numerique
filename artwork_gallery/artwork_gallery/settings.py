@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Redirect URL default for login required
-LOGIN_URL = 'login'
+LOGIN_URL = "login"
 
 
 # Internationalization
