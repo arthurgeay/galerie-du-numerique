@@ -5,14 +5,13 @@ from django.views.generic import DetailView
 class ArtworkDetailView(DetailView):
     model = Artwork
     queryset = Artwork.objects.filter(id=1)
-    print(queryset)
     
     def get(self, request, *args, **kwargs):
         artwork = get_object_or_404(Artwork, id=kwargs['id'])
-        artist = artwork.artist_id
-        category = artwork.category_id
+        artist = Artist.objects.get(id=artwork.artist_id)
+        category = Category.objects.get(id=artwork.category_id)
         context = {'artwork': artwork, 'artist': artist, 'category': category}
-        print(Artwork)
+        print(artist)
         return render(request, 'artworks/artwork_detail.html', context)
     
     
