@@ -13,11 +13,30 @@
 
 .art-list {
     padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+    counter-reset: classement;
 }
 .art-item {
     list-style-type: none;
     background-color: var(--primary);
+    position: relative;
 }
+.art-item::after {
+    counter-increment: classement;
+    content: counter(classement);
+    background-color: var(--primary);
+    font-size: 2rem;
+    font-weight: bold;
+    width: 2rem;
+    height: 3rem;
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    padding-left: .4rem;
+}
+
 .art-item-infos {
     display: grid;
     grid-template-columns: 65% 35%;
@@ -25,8 +44,18 @@
 }
 
 .art-item-image {
-    min-height: 20rem;
-    background-color: lightgray;
+    height: 20rem;
+    background-color: var(--card);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.art-item-image img {
+    object-fit: contain;
+    height: 100%;
+}
+.art-item-title {
+    font-weight: bold;
 }
 .art-item-date {
     align-self: flex-end;
@@ -34,4 +63,5 @@
 }
 .art-item-author {
     margin-bottom: 0;
+    margin-top: -1rem;
 }
