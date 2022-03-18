@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 
 from .models import Artwork
 
+
 @login_required()
 def gallery(request):
     # TODO list by popularity
