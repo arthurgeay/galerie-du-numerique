@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 15:00+0100\n"
+"POT-Creation-Date: 2022-03-18 15:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,8 +52,7 @@ msgid "Vous n'avez aucun compte ? Inscrivez-vous"
 msgstr "You don't have an account ? Sign up"
 
 #: authentication/templates/authentication/login.html:19
-#, fuzzy
-#| msgid "Mot de passe"
+#: authentication/templates/password-reset/password_reset_done.html:5
 msgid "Mot de passe oublié"
 msgstr "Forgot your password ?"
 
@@ -68,6 +67,14 @@ msgstr "Register"
 #: authentication/templates/authentication/signup.html:21
 msgid "Vous avez déjà un compte ? Connectez-vous"
 msgstr "Already have an account? Log in"
+
+#: authentication/templates/password-reset/password_reset_done.html:6
+msgid ""
+"Un lien pour réinitialiser votre mot de passe vient de vous être envoyé. "
+"Vérifiez vos emails."
+msgstr ""
+"One link to reset your password has been sent to your email address. Check "
+"your emails."
 
 #: authentication/views.py:21
 msgid "Bonjour, {}! Vous êtes connecté"

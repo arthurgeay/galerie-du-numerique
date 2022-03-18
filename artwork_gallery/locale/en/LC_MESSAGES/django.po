@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 15:00+0100\n"
+"POT-Creation-Date: 2022-03-18 15:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1476,14 +1476,19 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#~ msgid "Accueil"
-#~ msgstr "Home"
+#: templates/base.html:24
+msgid "Accueil"
+msgstr "Home"
 
-#~ msgid "Déconnexion"
-#~ msgstr "Logout"
+#: templates/base.html:26
+msgid "Galerie"
+msgstr "Art Gallery"
 
-#~ msgid "Connexion"
-#~ msgstr "Login"
+#: templates/base.html:27
+msgid "Déconnexion"
+msgstr "Logout"
 
-#~ msgid "Fait avec "
-#~ msgstr "Build with "
+#: templates/base.html:29
+msgid "Connexion"
+msgstr "Login"
+

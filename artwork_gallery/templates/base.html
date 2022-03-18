@@ -21,12 +21,12 @@
         </div>   
         <nav class="container-fluid">
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="#">{% trans "Accueil" %}</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'galery' %}">Galerie</a></li>
-                    <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+                    <li><a href="{% url 'galery' %}">{% trans "Galerie" %}</a></li>
+                    <li><a href="{% url 'logout'%}">{% trans "Déconnexion" %}</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}">Connexion</a></li>
+                    <li><a href="{% url 'login' %}">{% trans "Connexion" %}</a></li>
                 {% endif %}
             </ul>
         </nav>
