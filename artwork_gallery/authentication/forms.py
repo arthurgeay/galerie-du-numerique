@@ -18,6 +18,7 @@ class LoginForm(forms.Form):
 
 class SignupForm(UserCreationForm):
     username = forms.CharField(label=_("Nom d'utilisateur"))
+    email = forms.EmailField(label=_("Adresse e-mail"))
     password1 = forms.CharField(label=_("Mot de passe"), widget=forms.PasswordInput)
     password2 = forms.CharField(label=_("Confirmation du mot de passe"), widget=forms.PasswordInput)
     class Meta(UserCreationForm.Meta):
