@@ -19,12 +19,13 @@
     <div class="gallery">
         <ul class="art-list">
             {% for artwork in artworks %}
-                <li class="art-item">
+            <li class="art-item">
+                <a href="{% url 'artwork_detail' artwork.id %}">
                     <div class="art-item-image">
                         {% if artwork.image %}
-                            <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}" />
+                            <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}"/>
                         {% else %}
-                            <img src="{% static 'images/404.png' %}" alt="Image introuvable" />
+                            <img src="{% static 'images/404.png' %}" alt="Image introuvable"/>
                         {% endif %}
                     </div>
                     <div class="art-item-infos">
@@ -32,9 +33,10 @@
                         <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
                         <p class="art-item-author">{{ artwork.artist.name }}</p>
                     </div>
-                </li>
+                </a>
+            </li>
             {% empty %}
-                <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
+            <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
             {% endfor %}
         </ul>
 
