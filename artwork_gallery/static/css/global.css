@@ -107,6 +107,10 @@ footer li {
     list-style-type: none;
 }
 
+footer li {
+    margin-right: 2rem;
+}
+
 h2 {
     font-size: 1.5rem;
 }
@@ -130,5 +134,16 @@ h3 {
     }
     .place-image {
         margin-right: 2rem;
+    }
+    footer ul,
+    footer li,
+    footer .logo {
+        margin-bottom: 0;
+    }
+    footer,
+    footer ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
