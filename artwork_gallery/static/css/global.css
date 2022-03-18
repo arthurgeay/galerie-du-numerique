@@ -1,112 +1,134 @@
 /* Orange Light scheme (Default) */
+
+
 /* Can be forced with data-theme="light" */
+
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #f08D18;
-  --primary-hover: #f57c00;
-  --primary-focus: rgba(251, 140, 0, 0.125);
-  --primary-inverse: #FFF;
-  --color: #000;
-  --card: #f1f1f1;
+    --primary: #f08D18;
+    --primary-hover: #f57c00;
+    --primary-focus: rgba(251, 140, 0, 0.125);
+    --primary-inverse: #FFF;
+    --color: #000;
+    --card: #f1f1f1;
 }
 
+
 /* Orange Dark scheme (Auto) */
+
+
 /* Automatically enabled if user has Dark mode enabled */
+
 @media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+     :root:not([data-theme="light"]) {
+        --primary: #f08D18;
+        --primary-hover: #ff9800;
+        --primary-focus: rgba(251, 140, 0, 0.25);
+        --primary-inverse: #FFF;
+        --color: #FFF;
+        --card: #424242;
+    }
+}
+
+
+/* Orange Dark scheme (Forced) */
+
+
+/* Enabled if forced with data-theme="dark" */
+
+[data-theme="dark"] {
     --primary: #f08D18;
     --primary-hover: #ff9800;
     --primary-focus: rgba(251, 140, 0, 0.25);
     --primary-inverse: #FFF;
     --color: #FFF;
     --card: #424242;
-  }
 }
 
-/* Orange Dark scheme (Forced) */
-/* Enabled if forced with data-theme="dark" */
-[data-theme="dark"] {
-  --primary: #f08D18;
-  --primary-hover: #ff9800;
-  --primary-focus: rgba(251, 140, 0, 0.25);
-  --primary-inverse: #FFF;
-  --color: #FFF;
-  --card: #424242;
-}
 
 /* Orange (Common styles) */
+
 :root {
-  --form-element-active-border-color: var(--primary);
-  --form-element-focus-color: var(--primary-focus);
-  --switch-color: var(--primary-inverse);
-  --switch-checked-background-color: var(--primary);
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
 }
 
 a:active,
 a:hover,
 a:focus {
-  opacity: .7;
+    opacity: .7;
 }
-
 
 header {
-  background-color: var(--primary);
-  display: flex;
-  margin-bottom: 4rem;
+    background-color: var(--primary);
+    display: flex;
+    margin-bottom: 4rem;
 }
 
-
 header ul {
-  margin-left: auto;
-  margin-right: 0;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .logo {
-  max-width: 10rem;
-  object-fit: contain;
+    max-width: 10rem;
+    object-fit: contain;
 }
+
 header .logo {
-  position: relative;
-  top: 2rem;
-  left: 1rem;
+    position: relative;
+    top: 2rem;
+    left: 1rem;
 }
 
 .place {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .place-image {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 footer {
-  padding: 1rem 0;
-  background-color: var(--primary);
+    padding: 1rem 0;
+    background-color: var(--primary);
+    margin-top: 6rem;
 }
+
 footer .logo {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 footer ul,
 footer li {
-  list-style-type: none;
+    list-style-type: none;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.2rem;
 }
 
 
 /* Media queries */
+
 @media (min-width: 576px) {
-  .logo {
-    left: 2.5rem;
-  }
+    .logo {
+        left: 2.5rem;
+    }
 }
 
-
 @media (min-width: 1000px) {
-  .place {
-    flex-direction: row;
-  }
-  .place-image {
-    margin-right: 2rem;
-  }
+    .place {
+        flex-direction: row;
+    }
+    .place-image {
+        margin-right: 2rem;
+    }
 }
