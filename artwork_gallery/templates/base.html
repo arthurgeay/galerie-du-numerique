@@ -12,24 +12,25 @@
     <title>Galerie du numérique</title>
 </head>
 <body>
-    <nav class="container-fluid">
-        <ul>
-            <li><strong>La galerie du numérique</strong></li>
-        </ul>
-        <ul>
-            <li><a href="#">Accueil</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'logout'%}">Déconnexion</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Connexion</a></li>
-            {% endif %}
-        </ul>
-    </nav>
+    <header>
+        <div class="logo">
+            {% load static %}
+            <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+        </div>   
+        <nav class="container-fluid">
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'galery' %}">Galerie</a></li>
+                    <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
     <main class="container">
         {% block content %}{% endblock content %}
     </main>
-    <footer class="container-fluid">
-      <small>Built with <a href="https://picocss.com" class="secondary">Pico</a></small>
-    </footer>
 </body>
 </html>

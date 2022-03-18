@@ -1,6 +1,8 @@
 from django.urls import path
 from artworks.views import ArtworkDetailView
+from artworks import views
 
 urlpatterns = [
-    path("artworks/<int:id>", ArtworkDetailView.as_view(), name="artwork_detail")
+    path("", views.gallery, name="galery"),
+    path("<int:id>", ArtworkDetailView.as_view(), name="artwork_detail"),
 ]
