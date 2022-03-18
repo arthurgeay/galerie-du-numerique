@@ -44,6 +44,8 @@ DB_USER=postgres
 DB_PASSWORD=root  
 DB_PORT=5432  
 DEBUG=True
+EMAIL_USER=
+EMAIL_PASSWORD=
 
 #Exécuter les migrations
 python manage.py migrate 

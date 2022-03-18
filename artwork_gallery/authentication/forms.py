@@ -22,4 +22,4 @@ class SignupForm(UserCreationForm):
     password2 = forms.CharField(label=_("Confirmation du mot de passe"), widget=forms.PasswordInput)
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ['username', 'password1', 'password2']
+        fields = ("username", "email", "password1", "password2")
