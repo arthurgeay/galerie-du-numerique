@@ -1,144 +1,110 @@
 /* Orange Light scheme (Default) */
+
+
 /* Can be forced with data-theme="light" */
+
 [data-theme="light"],
 :root:not([data-theme="dark"]) {
-  --primary: #F08D18;
-  --primary-hover: #F6BD79;
-  --primary-focus: #C9730D;
-  --primary-inverse: #FFF;
-}
-
-/* Orange Dark scheme (Auto) */
-/* Automatically enabled if user has Dark mode enabled */
-@media only screen and (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
     --primary: #F08D18;
     --primary-hover: #F6BD79;
     --primary-focus: #C9730D;
     --primary-inverse: #FFF;
-  }
 }
+
+
+/* Orange Dark scheme (Auto) */
+
+
+/* Automatically enabled if user has Dark mode enabled */
+
+@media only screen and (prefers-color-scheme: dark) {
+     :root:not([data-theme="light"]) {
+        --primary: #F08D18;
+        --primary-hover: #F6BD79;
+        --primary-focus: #C9730D;
+        --primary-inverse: #FFF;
+    }
+}
+
 
 /* Orange Dark scheme (Forced) */
+
+
 /* Enabled if forced with data-theme="dark" */
+
 [data-theme="dark"] {
-  --primary: #F08D18;
-  --primary-hover: #F6BD79;
-  --primary-focus: #C9730D;
-  --primary-inverse: #FFF;
+    --primary: #F08D18;
+    --primary-hover: #F6BD79;
+    --primary-focus: #C9730D;
+    --primary-inverse: #FFF;
 }
+
 
 /* Orange (Common styles) */
+
 :root {
-  --form-element-active-border-color: var(--primary);
-  --form-element-focus-color: var(--primary-focus);
-  --switch-color: var(--primary-inverse);
-  --switch-checked-background-color: var(--primary);
+    --form-element-active-border-color: var(--primary);
+    --form-element-focus-color: var(--primary-focus);
+    --switch-color: var(--primary-inverse);
+    --switch-checked-background-color: var(--primary);
 }
 
+
 /* GLOBAL */
-h1, h2, h3, h4, button, legend {
-  font-family: "Mohave", sans-serif;
-  font-weight: bold;
-} 
+
+h1,
+h2,
+h3,
+h4,
+button,
+legend {
+    font-family: "Mohave", sans-serif;
+    font-weight: bold;
+}
 
 h1 {
-  font-size: 64px;
-  color: #F08D18;
+    font-size: 64px;
+    color: #F08D18;
 }
 
 h2 {
-  font-size: 42px;
+    font-size: 42px;
 }
 
 h3 {
-  font-size: 26px;
-  text-transform: uppercase;
+    font-size: 26px;
+    text-transform: uppercase;
 }
 
 p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
 }
 
 button {
-  border-radius: 0;
-  text-transform: uppercase;
-  font-size: 18px;
-  height: auto;
-  width: auto;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    height: auto;
+    width: auto;
 }
 
 legend {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 strong {
-  color: #F08D18;
-  font-weight: bold;
+    color: #F08D18;
+    font-weight: bold;
 }
 
 .right-text {
-  text-align: right;
+    text-align: right;
 }
+
 
 /* Footer */
-body > footer {
-  padding: 1rem 0;
-}
 
-/* ARTWORKS DETAILS */
-.detail-author {
-  background-color: #F08D18;
-  display: flex;
-  padding: 15px;
-  color: white;
-  width: 45%;
-  margin-top: 30px;
-}
-
-.detail-author h3 {
-  color: white;
-  margin-bottom: 0;
-}
-
-.detail-author img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 30px;
-}
-
-.justify-text {
-  text-align: justify;
-}
-
-.img-description {
-  display: flex;
-  justify-content: space-between;
-}
-
-.img-description img {
-  width: 45%;
-}
-
-.img-description p {
-  width: 45%;
-}
-
-.artwork-heading {
-  justify-content: space-between;
-}
-
-.artwork-heading, .artwork-heading div {
-  display: flex;
-}
-
-.artwork-heading div p {
-  margin-right: 30px;
-}
-
-.artwork-heading .right-text {
-  margin-right: 30px;
-  width: 250px;
+body>footer {
+    padding: 1rem 0;
 }

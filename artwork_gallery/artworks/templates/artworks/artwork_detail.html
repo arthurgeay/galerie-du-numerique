@@ -1,15 +1,8 @@
-{% extends 'base.html' %}
-
-
-{% block links %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'css/details.css' %}" />
-{% endblock links %}
-
-{% block content %}
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/details.css' %}" /> {% endblock links %} {% block content %}
 
 <h1>{{artwork.title}}</h1>
-<div>
+<div class="artwork-content">
     <div class="artwork-heading">
         <div>
             <p>Date <strong>{{artwork.released_at|default_if_none:"Donnée inconnue"}}</strong></p>
@@ -20,8 +13,9 @@
             {% endif %}
             <p>Lieu <strong>{{artwork.location|default_if_none:"Donnée inconnue"}}</strong></p>
         </div>
-        <div>
-            <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !</legend>
+        <div class="vote">
+            <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
+            </legend>
             <button>Voter</button>
         </div>
     </div>
@@ -33,10 +27,8 @@
 </div>
 <div class="detail-author">
     {% if artist.image%}
-    <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid">
-    {% else %}
-    <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error">
-    {% endif %}
+    <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid"> {% else %}
+    <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error"> {% endif %}
     <div>
         <h3>{{artist.name}}</h3>
         {% if artist.birthday and artist.deathday %}

@@ -1,7 +1,117 @@
-.img-error{
-   height:300px; 
-   width: 300px;
+.img-error {
+    height: 300px;
+    width: 300px;
 }
-.img-author{
-margin-top: 2em
+
+.img-author {
+    margin-top: 2em
+}
+
+.artwork-heading strong {
+    margin-left: 30px;
+}
+
+.detail-author {
+    background-color: #F08D18;
+    display: flex;
+    padding: 15px;
+    color: white;
+    margin-top: 30px;
+}
+
+.detail-author h3 {
+    color: white;
+    margin-bottom: 0;
+}
+
+.detail-author img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
+.justify-text {
+    text-align: justify;
+}
+
+.img-description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img-description img,
+.img-description p,
+.detail-author {
+    width: 45%;
+}
+
+.artwork-heading {
+    justify-content: space-between;
+}
+
+.artwork-heading,
+.artwork-heading div {
+    display: flex;
+}
+
+.artwork-heading div p {
+    margin-right: 60px;
+}
+
+.artwork-heading .right-text {
+    margin-right: 30px;
+    width: 180px;
+}
+
+
+/* LAPTOPS */
+
+@media only screen and (max-width: 1200px) {
+    .artwork-heading strong {
+        margin-left: 10px;
+    }
+    .artwork-heading div p {
+        margin-right: 30px;
+    }
+}
+
+
+/* MOBILES AND TABLETS */
+
+@media only screen and (max-width: 992px) {
+    h1 {
+        text-align: center;
+    }
+    .artwork-heading,
+    .artwork-heading div:first-child,
+    .img-description {
+        display: block;
+    }
+    .img-description img,
+    .img-description p,
+    .detail-author {
+        width: 100%;
+    }
+    .img-description img {
+        margin-bottom: 30px;
+    }
+    .vote {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+    .vote .right-text {
+        text-align: inherit;
+        margin-right: inherit;
+        margin-left: 30px;
+        width: inherit;
+    }
+    .artwork-content {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    /* .img-description p {
+        position: absolute;
+        margin-top: 50%;
+    } */
 }
