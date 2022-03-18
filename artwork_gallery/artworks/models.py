@@ -32,5 +32,8 @@ class Artwork(models.Model):
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     votes = models.ManyToManyField(User)
 
+    class Meta:
+        permissions = (("can_vote", "Can vote for an artwork"),)
+
     def __str__(self):
         return self.title

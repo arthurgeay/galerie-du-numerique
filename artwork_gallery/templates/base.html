@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="#">Accueil</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'galery' %}">Galerie</a></li>
+                    <li><a href="{% url 'gallery' %}">Galerie</a></li>
                     <li><a href="{% url 'logout'%}">Déconnexion</a></li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Connexion</a></li>
