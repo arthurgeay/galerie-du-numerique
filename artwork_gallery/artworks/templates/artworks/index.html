@@ -6,13 +6,14 @@
 {% endblock links %}
 
 {% block content %}
-    <h1>Galerie</h1>
+{% load i18n %}
+    <h1>{% trans "Galerie" %}</h1>
     {% include "presentation.html" %}
     <div class="separator"></div>
     {% if artworks|length > 0 %}
         <div class="controls">
-            <button id="sort">Trier</button>
-            <button id="filter">Filtrer</button>
+            <button id="sort">{% trans "Trier" %}</button>
+            <button id="filter">{% trans "Filtrer" %}</button>
         </div>
     {% endif %}
 
