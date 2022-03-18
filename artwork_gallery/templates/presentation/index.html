@@ -17,4 +17,14 @@
 <h2>Une liaison direct avec notre Galerie Parisienne</h2>
 {% include "presentation.html" %}
 <h2>Témoignages de nos visiteurs</h2>
-{% include "testimonial.html" with message="J’aime ce nouveaux système, il me permet de participer dans la vie de la galerie et d’apprécier des oeuvres que je ne connaissais pas" name="Paul"%} {% endblock content %}
+<div class="testimonials">
+    <div class="testimonial">
+        <p class="testimonial-content">J’aime ce nouveau système, il me permet de participer dans la vie de la galerie et d’apprécier des oeuvres que je ne connaissais pas.</p>
+        <p class="testimonial-name">Paul</p>
+    </div>
+    <div class="testimonial">
+        <p class="testimonial-content">Super idée ! J’adore le concept que nous apporte la galerie, avec ma famille nous y allons plus régulièrement afin de découvrir de nouvelles oeuvres.</p>
+        <p class="testimonial-name">Jade</p>
+    </div>
+</div>
+{% endblock content %}

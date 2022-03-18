@@ -1,5 +1,5 @@
 .hero {
-    background-image: url('https://lepetitjournal.com/sites/default/files/styles/main_article/public/2021-02/national%20gallery.jpg?itok=eQNzhnfZ');
+    background-image: url('../images/inside.png');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -25,13 +25,21 @@
     background: linear-gradient(0deg, var(--primary), var(--primary) 89%, rgba(110, 81, 190, 0) 90%);
 }
 
+.testimonials {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
 .testimonial {
     background-color: var(--card);
     position: relative;
     padding: 4rem;
     width: fit-content;
     min-width: 20rem;
-    max-width: 40rem;
+    max-width: 27rem;
+    margin-bottom: 2rem;
 }
 
 .testimonial::after {
@@ -56,4 +64,10 @@
     opacity: .7;
     font-size: 0.9rem;
     margin-top: 1rem;
+}
+
+@media (max-width: 1200px) {
+    .testimonial {
+        max-width: 100%;
+    }
 }
