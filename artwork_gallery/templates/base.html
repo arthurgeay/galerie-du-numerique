@@ -1,5 +1,7 @@
 <!doctype html>
+
 {% load static %}
+{% load i18n %}
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -8,19 +10,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/pico.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/global.css' %}" />
-    <title>Galerie du numérique</title>
+    <title>{% trans 'Galerie du numérique' %}</title>
+
 </head>
 <body>
     <nav class="container-fluid">
         <ul>
-            <li><strong>La galerie du numérique</strong></li>
+            <li><strong>{% trans 'Galerie du numérique' %}</strong></li>
         </ul>
         <ul>
-            <li><a href="#">Accueil</a></li>
+            <li><a href="#">{% trans "Accueil" %}</a></li>
             {% if user.is_authenticated %}
-                <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+                <li><a href="{% url 'logout'%}">{% trans 'Déconnexion' %}</a></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Connexion</a></li>
+                <li><a href="{% url 'login' %}">{% trans 'Connexion' %}</a></li>
             {% endif %}
         </ul>
     </nav>
@@ -28,7 +31,7 @@
         {% block content %}{% endblock content %}
     </main>
     <footer class="container-fluid">
-      <small>Built with <a href="https://picocss.com" class="secondary">Pico</a></small>
+      <small>{% trans 'Fait avec ' %}<a href="https://picocss.com" class="secondary">Pico</a></small>
     </footer>
 </body>
 </html>

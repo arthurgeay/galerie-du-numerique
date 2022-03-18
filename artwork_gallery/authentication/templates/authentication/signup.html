@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load i18n %}
     <article>
         <hgroup>
-            <h1>Inscription</h1>
-            <h2>Votez pour votre oeuvre favorite !</h2>
+            <h1>{% trans 'Inscription' %}</h1>
+            <h2>{% trans 'Votez pour votre oeuvre favorite !' %}</h2>
         </hgroup>
 
         <form method="post">
@@ -15,8 +16,8 @@
             {% endfor %}
 
             {% csrf_token %}
-            <button type="submit">S'inscrire</button>
+            <button type="submit">{% trans "S'inscrire" %}</button>
         </form>
-          <p><a href="{% url 'login'%}">Vous avez déjà un compte ? Connectez-vous</a></p>
+          <p><a href="{% url 'login'%}">{% trans "Vous avez déjà un compte ? Connectez-vous" %}</a></p>
     </article>
 {% endblock content %}
