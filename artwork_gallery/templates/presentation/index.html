@@ -9,4 +9,12 @@
         </div>
     </div>
 </div>
-{% endblock hero %} {% block content %} {% include "presentation.html" %} {% endblock content %}
+{% endblock hero %}
+<p></p>
+{% block content %}
+<h2>Un concept innovant</h2>
+<p>La galerie du numérique vous propose une nouvelle forme de participation à la vie de notre galerie, chaque semaine vous pouvez voter afin de mettre en avant une de vos oeuvres favorites dans notre Galerie</p>
+<h2>Une liaison direct avec notre Galerie Parisienne</h2>
+{% include "presentation.html" %}
+<h2>Témoignages de nos visiteurs</h2>
+{% include "testimonial.html" with message="J’aime ce nouveaux système, il me permet de participer dans la vie de la galerie et d’apprécier des oeuvres que je ne connaissais pas" name="Paul"%} {% endblock content %}

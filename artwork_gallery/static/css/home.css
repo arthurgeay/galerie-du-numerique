@@ -24,3 +24,36 @@
     font-size: 3rem;
     background: linear-gradient(0deg, var(--primary), var(--primary) 89%, rgba(110, 81, 190, 0) 90%);
 }
+
+.testimonial {
+    background-color: var(--card);
+    position: relative;
+    padding: 4rem;
+    width: fit-content;
+    min-width: 20rem;
+    max-width: 40rem;
+}
+
+.testimonial::after {
+    content: '"';
+    display: block;
+    position: absolute;
+    top: 0rem;
+    left: 2rem;
+    font-size: 5rem;
+    color: var(--primary);
+    width: 10rem;
+    height: 10rem;
+}
+
+.testimonial-content {
+    min-height: 3rem;
+    margin-bottom: 0;
+}
+
+.testimonial-name {
+    margin-bottom: -2rem;
+    opacity: .7;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
