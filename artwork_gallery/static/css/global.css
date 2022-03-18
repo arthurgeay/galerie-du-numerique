@@ -9,6 +9,8 @@
     --primary-hover: #F6BD79;
     --primary-focus: #C9730D;
     --primary-inverse: #FFF;
+    --color: #000;
+    --card: #f1f1f1;
 }
 
 
@@ -23,6 +25,8 @@
         --primary-hover: #F6BD79;
         --primary-focus: #C9730D;
         --primary-inverse: #FFF;
+        --color: #FFF;
+        --card: #424242;
     }
 }
 
@@ -37,6 +41,8 @@
     --primary-hover: #F6BD79;
     --primary-focus: #C9730D;
     --primary-inverse: #FFF;
+    --color: #FFF;
+    --card: #424242;
 }
 
 
@@ -105,6 +111,45 @@ strong {
 
 /* Footer */
 
-body>footer {
-    padding: 1rem 0;
+header {
+    background-color: var(--primary);
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+header ul {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.logo {
+    max-width: 10rem;
+    object-fit: contain;
+    position: relative;
+    top: 2rem;
+    left: 1rem;
+}
+
+.place {
+    display: flex;
+    flex-direction: column;
+}
+
+.place-image {
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 576px) {
+    .logo {
+        left: 2.5rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .place {
+        flex-direction: row;
+    }
+    .place-image {
+        margin-right: 2rem;
+    }
 }
