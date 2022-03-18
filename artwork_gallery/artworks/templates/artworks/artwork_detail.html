@@ -13,10 +13,10 @@
     <div class="artwork-heading">
         <div>
             <p>Date <strong>{{artwork.released_at|default_if_none:"Donnée inconnue"}}</strong></p>
-            {% if artist.birthday and artist.deathday %}
-            <p>Taille <strong>{{artwork.width}}cm x {{artwork.height}}cm</strong></p>
+            {% if artwork.width and artwork.height %}
+                <p>Taille <strong>{{artwork.width}}cm x {{artwork.height}}cm</strong></p>
             {% else %}
-            <p>Taille Inconnue</p>
+                <p>Taille Inconnue</p>
             {% endif %}
             <p>Lieu <strong>{{artwork.location|default_if_none:"Donnée inconnue"}}</strong></p>
         </div>
@@ -27,20 +27,24 @@
     </div>
 
     <div class="img-description">
-        <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid">
+        {% if artwork.image %}
+            <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid">
+        {% else %}
+            <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid">
+        {% endif %}
         <p class="justify-text">{{artwork.description}}</p>
     </div>
 </div>
 <div class="detail-author">
-    {% if artist.image%}
-    <img src="{{ artist.image }}" alt="{{ artist.name }}" class="img-fluid">
+    {% if artwork.artist.image %}
+        <img src="{{ artwork.artist.image }}" alt="{{ artwork.artist.name }}" class="img-fluid">
     {% else %}
-    <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error">
+        <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error">
     {% endif %}
     <div>
-        <h3>{{artist.name}}</h3>
-        {% if artist.birthday and artist.deathday %}
-        <legend>{{artist.birthday}} - {{artist.deathday}}</legend>
+        <h3>{{ artwork.artist.name }}</h3>
+        {% if artwork.artist.birthday and artwork.artist.deathday %}
+            <legend>{{ artwork.artist.birthday }} - {{ artwork.artist.deathday }}</legend>
         {% endif %}
     </div>
 </div>
