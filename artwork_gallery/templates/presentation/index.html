@@ -14,6 +14,29 @@
 {% block content %}
 <h2>Un concept innovant</h2>
 <p>La galerie du numérique vous propose une nouvelle forme de participation à la vie de notre galerie, chaque semaine vous pouvez voter afin de mettre en avant une de vos oeuvres favorites dans notre Galerie</p>
+<div class="squares">
+    <div class="square">
+        <div class="square-image">
+            {% load static %}
+            <img src="{% static 'images/art-3.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Vote</div>
+    </div>
+    <div class="square">
+        <div class="square-image">
+            {% load static %}
+            <img src="{% static 'images/art-2.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Exposition</div>
+    </div>
+    <div class="square">
+        <div class="square-image">
+            <img src="{% static 'images/art-1.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Classement</div>
+    </div>
+</div>
+
 <h2>Une liaison direct avec notre Galerie Parisienne</h2>
 {% include "presentation.html" %}
 <h2>Témoignages de nos visiteurs</h2>

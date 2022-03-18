@@ -71,3 +71,31 @@
         max-width: 100%;
     }
 }
+
+.squares {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.square {
+    width: 17rem;
+    height: 17rem;
+}
+
+.square-image {
+    background-color: var(--card);
+    width: 100%;
+    height: 100%;
+}
+
+.square-infos {
+    background-color: var(--primary);
+    text-align: center;
+    height: 3rem;
+    position: relative;
+    top: -3rem;
+    line-height: 3rem;
+}
