@@ -2,80 +2,50 @@
 
 {% block links %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
 {% endblock links %}
 
 {% block content %}
-<h1>Galerie</h1>
-{% include "presentation.html" %}
-<div class="separator"></div>
-<div class="controls">
-    <button id="sort">Trier</button>
-    <button id="filter">Filtrer</button>
-</div>
+    <h1>Galerie</h1>
+    {% include "presentation.html" %}
+    <div class="separator"></div>
+    {% if artworks|length > 0 %}
+        <div class="controls">
+            <button id="sort">Trier</button>
+            <button id="filter">Filtrer</button>
+        </div>
+    {% endif %}
 
-<div class="gallery">
-    <ul class="art-list">
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://lh6.ggpht.com/HlgucZ0ylJAfZgusynnUwxNIgIp5htNhShF559x3dRXiuy_UdP3UQVLYW6c=s1200" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://www.culture.gouv.fr/var/culture/storage/images/_aliases/metadata/media/dracs/drac-centre/images/politique-et-action-culturelles/statistiques/visuel-arts-plastiques/599680-1-fre-FR/visuel-arts-plastiques.jpg" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://www.letudiant.fr/uploads/mediatheque/ETU_ETU/9/5/2428795-adobestock-365376369-original.jpeg" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://www.absoluteartgallery.com/files/artists/image/4ff7f408-89d6-4e5b-8bbe-f9453f2b0f44/Virus.jpg" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://lh6.ggpht.com/HlgucZ0ylJAfZgusynnUwxNIgIp5htNhShF559x3dRXiuy_UdP3UQVLYW6c=s1200" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-        <li class="art-item">
-            <div class="art-item-image">
-                <img src="https://www.absoluteartgallery.com/files/artists/image/4ff7f408-89d6-4e5b-8bbe-f9453f2b0f44/Virus.jpg" alt="">
-            </div>
-            <div class="art-item-infos">
-                <p class="art-item-title">Nom de l'oeuvre</p>
-                <p class="art-item-date">20 Septembre 1984</p>
-                <p class="art-item-author">Auteur</p>
-            </div>
-        </li>
-    </ul>
-</div>
+    <div class="gallery">
+        <ul class="art-list">
+            {% for artwork in artworks %}
+                <li class="art-item">
+                    <div class="art-item-image">
+                        {% if artwork.image %}
+                            <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}" />
+                        {% else %}
+                            <img src="{% static 'images/404.png' %}" alt="Image introuvable" />
+                        {% endif %}
+                    </div>
+                    <div class="art-item-infos">
+                        <p class="art-item-title">{{ artwork.title }}</p>
+                        <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
+                        <p class="art-item-author">{{ artwork.artist.name }}</p>
+                    </div>
+                </li>
+            {% empty %}
+                <p>Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
+            {% endfor %}
+        </ul>
+
+    </div>
+     <div class="pagination">
+        {% if artworks.has_previous %}
+            <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a>
+         {% endif %}
+
+        {% if artworks.has_next %}
+            <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a>
+        {% endif %}
+    </div>
 {% endblock content %}

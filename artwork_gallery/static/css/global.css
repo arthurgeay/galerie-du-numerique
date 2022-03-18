@@ -155,3 +155,57 @@ h3 {
         align-items: center;
     }
 }
+
+a:active,
+a:hover,
+a:focus {
+  opacity: .7;
+}
+body > footer {
+  padding: 1rem 0;
+}
+
+header {
+  background-color: var(--primary);
+  display: flex;
+  margin-bottom: 4rem;
+}
+
+
+header ul {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.logo {
+  max-width: 10rem;
+  object-fit: contain;
+  position: relative;
+  top: 2rem;
+  left: 1rem;
+}
+
+.place {
+  display: flex;
+  flex-direction: column;
+}
+
+.place-image {
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 576px) {
+  .logo {
+    left: 2.5rem;
+  }
+}
+
+
+@media (min-width: 1000px) {
+  .place {
+    flex-direction: row;
+  }
+  .place-image {
+    margin-right: 2rem;
+  }
+}
