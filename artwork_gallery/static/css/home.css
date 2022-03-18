@@ -1,0 +1,26 @@
+.hero {
+    background-image: url('https://lepetitjournal.com/sites/default/files/styles/main_article/public/2021-02/national%20gallery.jpg?itok=eQNzhnfZ');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    margin-top: -4rem;
+    height: 100%;
+    margin-bottom: 4rem;
+}
+
+.hero .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    min-height: 80vh;
+}
+
+.title-container {
+    margin-bottom: 4rem;
+}
+
+.title {
+    display: inline;
+    font-size: 3rem;
+    background: linear-gradient(0deg, var(--primary), var(--primary) 89%, rgba(110, 81, 190, 0) 90%);
+}
