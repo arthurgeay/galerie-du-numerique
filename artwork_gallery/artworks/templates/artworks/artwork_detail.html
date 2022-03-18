@@ -13,7 +13,11 @@
             <div>
                 <div class="grid"> 
                 <p>Date {{artwork.released_at|default_if_none:"Donnée inconnue"}}</p>
+                 {% if artist.birthday and artist.deathday %}
                 <p>Taille {{artwork.width}}cm x {{artwork.heigth}}cm</p>
+                {% else %}
+                <p>Taille Inconnue</p>
+                {% endif %}
                 <p>Lieu {{artwork.location|default_if_none:"Donnée inconnue"}}</p>
                 <div>
                     <p>Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !</p>
@@ -44,8 +48,4 @@
                 <p>{{artist.birthday}} - {{artist.deathday}}</p>
             {% endif %}
         </div>
-
-
-
-
         <p></p>{% endblock content %}
