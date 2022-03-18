@@ -30,7 +30,8 @@
                     </div>
                     <div class="art-item-infos">
                         <p class="art-item-title">{{ artwork.title }}</p>
-                        <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
+                        {% trans 'Donnée inconnue' as transl %}
+                        <p class="art-item-date">{{ artwork.released_at|default_if_none: transl}</p>
                         <p class="art-item-author">{{ artwork.artist.name }}</p>
                     </div>
                 </li>
