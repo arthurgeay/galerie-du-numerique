@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
 
 from . import forms
 
@@ -17,9 +18,9 @@ def login_page(request):
             )
             if user is not None:
                 login(request, user)
-                message = "Bonjour, {}! Vous êtes connecté".format(user.username)
+                message = _("Bonjour, {}! Vous êtes connecté").format(user.username)
             else:
-                message = "Identifiants invalides"
+                message = _("Identifiants invalides")
     return render(
         request, "authentication/login.html", {"form": form, "message": message}
     )

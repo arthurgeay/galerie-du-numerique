@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 11:55+0100\n"
+"POT-Creation-Date: 2022-03-18 14:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1490,7 +1490,7 @@ msgstr "Logout"
 
 #: templates/base.html:26
 msgid "Connexion"
-msgstr "Connexion"
+msgstr "Login"
 
 #: templates/base.html:34
 msgid "Fait avec "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 11:55+0100\n"
+"POT-Creation-Date: 2022-03-18 14:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: authentication/forms.py:10 authentication/forms.py:20
+msgid "Nom d'utilisateur"
+msgstr "Username"
+
+#: authentication/forms.py:14 authentication/forms.py:21
+msgid "Mot de passe"
+msgstr "Password"
+
+#: authentication/forms.py:22
+msgid "Confirmation du mot de passe"
+msgstr "Confirm password"
+
 #: authentication/templates/authentication/login.html:7
 msgid "Connexion"
-msgstr "Connexion"
+msgstr "Login"
 
 #: authentication/templates/authentication/login.html:8
 #: authentication/templates/authentication/signup.html:8
@@ -29,7 +41,7 @@ msgstr "Vote for your favorite piece !"
 
 #: authentication/templates/authentication/login.html:15
 msgid "Se connecter"
-msgstr "Log in"
+msgstr "Login"
 
 #: authentication/templates/authentication/login.html:18
 msgid "Vous n'avez aucun compte ? Inscrivez-vous"
@@ -37,7 +49,7 @@ msgstr "You don't have an account ? Sign up"
 
 #: authentication/templates/authentication/signup.html:7
 msgid "Inscription"
-msgstr "Registration"
+msgstr "Register"
 
 #: authentication/templates/authentication/signup.html:19
 msgid "S'inscrire"
@@ -46,3 +58,11 @@ msgstr "Register"
 #: authentication/templates/authentication/signup.html:21
 msgid "Vous avez déjà un compte ? Connectez-vous"
 msgstr "Already have an account? Log in"
+
+#: authentication/views.py:21
+msgid "Bonjour, {}! Vous êtes connecté"
+msgstr "Hello, {}! You are logged in"
+
+#: authentication/views.py:23
+msgid "Identifiants invalides"
+msgstr "Unvalid credentials"
