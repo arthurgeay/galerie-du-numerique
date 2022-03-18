@@ -13,11 +13,16 @@
             {% endif %}
             <p>Lieu <strong>{{artwork.location|default_if_none:"Donnée inconnue"}}</strong></p>
         </div>
-        <div class="vote">
-            <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
-            </legend>
-            <button>Voter</button>
-        </div>
+            {% if user.is_superuser != True %}
+                <div class="vote">
+                    <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
+                    </legend>
+                    <form method="POST" action="{% url 'add_vote' artwork.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Voter</button>
+                    </form>
+                </div>
+            {% endif %}
     </div>
 
     <div class="img-description">
