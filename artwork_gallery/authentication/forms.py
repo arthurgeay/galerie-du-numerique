@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
-
+from django.contrib.auth.forms import PasswordResetForm
 class LoginForm(forms.Form):
     username = forms.CharField(
         max_length=63,
@@ -24,3 +24,10 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
         fields = ("username", "email", "password1", "password2")
+    
+class UserPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label=_('Email'), widget=forms.EmailInput(attrs={
+        'type': 'email',
+        'name': 'email'
+        }))
+    
