@@ -21,4 +21,5 @@ urlpatterns = [
     path("", include("authentication.urls")),
     path("", include("presentation.urls")),
     path("artworks/", include("artworks.urls")),
+    path("polls/", include("polls.urls")),
 ]

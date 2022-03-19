@@ -28,6 +28,7 @@
         --color: #FFF;
         --card: #424242;
     }
+
 }
 
 
@@ -154,58 +155,114 @@ h3 {
         justify-content: space-between;
         align-items: center;
     }
+
+/* GLOBAL */
+
+h1,
+h2,
+h3,
+h4,
+button,
+legend {
+    font-family: "Mohave", sans-serif;
+    font-weight: bold;
 }
 
-a:active,
-a:hover,
-a:focus {
-  opacity: .7;
+h1 {
+    font-size: 64px;
+    color: #F08D18;
 }
-body > footer {
-  padding: 1rem 0;
+
+h2 {
+    font-size: 42px;
 }
+
+h3 {
+    font-size: 26px;
+    text-transform: uppercase;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+button {
+    border-radius: 0;
+    text-transform: uppercase;
+    font-size: 18px;
+    height: auto;
+    width: auto;
+}
+
+legend {
+    font-size: 12px;
+}
+
+strong {
+    color: #F08D18;
+    font-weight: bold;
+}
+
+.right-text {
+    text-align: right;
+}
+
+
+/* Footer */
 
 header {
-  background-color: var(--primary);
-  display: flex;
-  margin-bottom: 4rem;
+    background-color: var(--primary);
+    display: flex;
+    margin-bottom: 4rem;
 }
 
-
 header ul {
-  margin-left: auto;
-  margin-right: 0;
+    margin-left: auto;
+    margin-right: 0;
 }
 
 .logo {
-  max-width: 10rem;
-  object-fit: contain;
-  position: relative;
-  top: 2rem;
-  left: 1rem;
+    max-width: 10rem;
+    object-fit: contain;
+    position: relative;
+    top: 2rem;
+    left: 1rem;
 }
 
 .place {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .place-image {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 @media (min-width: 576px) {
-  .logo {
-    left: 2.5rem;
-  }
+    .logo {
+        left: 2.5rem;
+    }
 }
 
-
 @media (min-width: 1000px) {
-  .place {
-    flex-direction: row;
-  }
-  .place-image {
-    margin-right: 2rem;
-  }
+    .place {
+        flex-direction: row;
+    }
+    .place-image {
+        margin-right: 2rem;
+    }
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.alert.success {
+    background: #2e7d32;
+}
+
+.alert.error {
+    background: #a41515;
 }
