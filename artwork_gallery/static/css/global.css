@@ -153,3 +153,16 @@ header ul {
         margin-right: 2rem;
     }
 }
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.alert.success {
+    background: #2e7d32;
+}
+
+.alert.error {
+    background: #a41515;
+}
