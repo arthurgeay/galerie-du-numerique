@@ -29,7 +29,7 @@
         {% if artwork.image %}
         <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid"> {% else %}
         <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid"> {% endif %}
-        <p class="justify-text">{{artwork.description|safe}}</p>
+            <p class="justify-text">{{artwork.description|safe|default:"Donnée introuvable"}}</p>
     </div>
 </div>
 <div class="detail-author">
