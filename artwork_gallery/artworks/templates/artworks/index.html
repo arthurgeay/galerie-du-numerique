@@ -7,15 +7,12 @@
 <div class="controls">
     <button id="sort">Trier</button>
 
-    <form method="GET" id="category_form" action="">
-        <select id="filter" name="category">
-            <option value="" selected>Filtrer</option>
-            {% for category in categories %}
-            <option value="{{ category.id }}">{{ category.name }}</option>
-            {% endfor %}
-        </select>
-    </form>
-
+    <select id="filter" name="category">
+        <option value="" selected>Filtrer</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
 </div>
 
 <div class="gallery">
