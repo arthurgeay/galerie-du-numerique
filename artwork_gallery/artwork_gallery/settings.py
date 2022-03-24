@@ -106,15 +106,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 # Redirect URL default for login required
@@ -134,8 +128,8 @@ EMAIL_HOST_PASSWORD = str(os.getenv("EMAIL_PASSWORD"))
 
 LANGUAGE_CODE = "fr-fr"
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-    os.path.join(BASE_DIR, 'mysite', 'locale'),
+    os.path.join(BASE_DIR, "locale"),
+    os.path.join(BASE_DIR, "mysite", "locale"),
 )
 TIME_ZONE = "UTC"
 
