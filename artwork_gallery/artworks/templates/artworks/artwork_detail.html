@@ -13,35 +13,43 @@
             {% endif %}
             <p>Lieu <strong>{{artwork.location|default_if_none:"Donnée inconnue"}}</strong></p>
         </div>
-            {% if user.is_superuser != True %}
-                <div class="vote">
-                    <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
-                    </legend>
-                    <form method="POST" action="{% url 'add_vote' artwork.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Voter</button>
-                    </form>
-                </div>
-            {% endif %}
+        {% if user.is_superuser != True %}
+        <div class="vote">
+            <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
+            </legend>
+            <form method="POST" action="{% url 'add_vote' artwork.id %}">
+                {% csrf_token %}
+                <button type="submit">Voter</button>
+            </form>
+        </div>
+        {% endif %}
     </div>
 
-    <div class="img-description">
-        {% if artwork.image %}
-        <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid"> {% else %}
-        <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid"> {% endif %}
+    <div class="artwork-container">
+        <div class="img-description">
+            <div class="img-description-infos">
+                <div class="img-description-container">
+                    {% if artwork.image %}
+                    <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid"> {% else %}
+                    <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid"> {% endif %}
+                </div>
+                <div class="detail-author">
+                    <div class="detail-author-img">
+                        {% if artwork.artist.image %}
+                        <img src="{{ artwork.artist.image }}" alt="{{ artwork.artist.name }}" class="img-fluid"> {% else %}
+                        <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error"> {% endif %}
+                    </div>
+                    <h3>{{ artwork.artist.name }}</h3>
+                    {% if artwork.artist.birthday and artwork.artist.deathday %}
+                    <legend>{{ artwork.artist.birthday }} - {{ artwork.artist.deathday }}</legend>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
         <p class="justify-text">{{artwork.description|safe}}</p>
     </div>
 </div>
-<div class="detail-author">
-    {% if artwork.artist.image %}
-    <img src="{{ artwork.artist.image }}" alt="{{ artwork.artist.name }}" class="img-fluid"> {% else %}
-    <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error"> {% endif %}
-    <div>
-        <h3>{{ artwork.artist.name }}</h3>
-        {% if artwork.artist.birthday and artwork.artist.deathday %}
-        <legend>{{ artwork.artist.birthday }} - {{ artwork.artist.deathday }}</legend>
-        {% endif %}
-    </div>
 </div>
+
 
 {% endblock content %}
