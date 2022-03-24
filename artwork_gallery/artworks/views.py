@@ -12,7 +12,7 @@ def gallery(request):
     # TODO list by popularity
     filter_category = request.GET.get('category')
     artwork_list = Artwork.objects.annotate(votes_count=Count('votes')).order_by('-votes_count').all()
-    categories = Category.objects.all()
+    categories = Category.objects.order_by('id').all()
     if filter_category:
         artwork_list = artwork_list.filter(category=filter_category).order_by('votes').all()
 
@@ -21,11 +21,6 @@ def gallery(request):
     artworks = paginator.get_page(page)
 
     return render(request, "artworks/index.html", {"artworks": artworks, "categories": categories})
-
-
-def filter(request):
-    return render(request, "artworks/index.html", {"artworks": artworks, "categories": categories})
-
 
 class ArtworkDetailView(DetailView):
     model = Artwork
