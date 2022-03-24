@@ -13,7 +13,7 @@ def gallery(request):
     artwork_list = Artwork.objects.all()
     categories = Category.objects.all()
 
-    paginator = Paginator(artwork_list, 6)  # Show 6 artworks per page
+    paginator = Paginator(artwork_list, 4)  # Show 4 artworks per page
     page = request.GET.get("page")
     artworks = paginator.get_page(page)
 
