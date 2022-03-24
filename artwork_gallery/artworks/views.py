@@ -11,12 +11,13 @@ from .models import Artwork
 def gallery(request):
     # TODO list by popularity
     artwork_list = Artwork.objects.all()
+    categories = Category.objects.all()
 
     paginator = Paginator(artwork_list, 6)  # Show 6 artworks per page
     page = request.GET.get("page")
     artworks = paginator.get_page(page)
 
-    return render(request, "artworks/index.html", {"artworks": artworks})
+    return render(request, "artworks/index.html", {"artworks": artworks, "categories": categories})
 
 
 class ArtworkDetailView(DetailView):

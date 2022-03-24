@@ -22,4 +22,5 @@ urlpatterns = [
     path("", include("presentation.urls")),
     path("artworks/", include("artworks.urls")),
     path("polls/", include("polls.urls")),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]

@@ -6,9 +6,11 @@
 {% if artworks|length > 0 %}
 <div class="controls">
     <button id="sort">Trier</button>
-    <select id="filter" name="filter">
+    <select id="filter">
         <option value="" selected>Filtrer</option>
-        <option value=""></option>
+        {% for category in categories %}
+        <option value="{{ category.name }}">{{ category.name }}</option>
+        {% endfor %}
     </select>
 </div>
 {% endif %}
