@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import gettext_lazy as _
+
 from django.contrib.auth.models import Group
 from . import forms
 
@@ -19,7 +20,7 @@ def login_page(request):
             if user is not None:
                 login(request, user)
                 message = _("Bonjour, {}! Vous êtes connecté").format(user.username)
-                return redirect("galery")
+                return redirect("gallery")
             else:
                 message = _("Identifiants invalides")
     return render(

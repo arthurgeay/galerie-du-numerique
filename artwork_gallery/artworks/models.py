@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -29,6 +30,10 @@ class Artwork(models.Model):
     location = models.fields.CharField(max_length=255, null=True, blank=True)
     artist = models.ForeignKey(Artist, null=False, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
+    votes = models.ManyToManyField(User)
+
+    class Meta:
+        permissions = (("can_vote", "Can vote for an artwork"),)
 
     def __str__(self):
         return self.title

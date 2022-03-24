@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}" /> {% endblock links%} {% block hero %}
+<div class="hero">
+    <div class="container">
+        <div class="title-container">
+            <h1 class="title">
+                La Galerie du<br /> Numérique
+            </h1>
+        </div>
+    </div>
+</div>
+{% endblock hero %}
+<p></p>
+{% block content %}
+<h2>Un concept innovant</h2>
+<p>La galerie du numérique vous propose une nouvelle forme de participation à la vie de notre galerie, chaque semaine vous pouvez voter afin de mettre en avant une de vos oeuvres favorites dans notre Galerie</p>
+<div class="squares">
+    <div class="square">
+        <div class="square-image">
+            {% load static %}
+            <img src="{% static 'images/art-3.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Vote</div>
+    </div>
+    <div class="square">
+        <div class="square-image">
+            {% load static %}
+            <img src="{% static 'images/art-2.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Exposition</div>
+    </div>
+    <div class="square">
+        <div class="square-image">
+            <img src="{% static 'images/art-1.png' %}" alt="" class="square-img">
+        </div>
+        <div class="square-infos">Classement</div>
+    </div>
+</div>
+
+<h2>Une liaison direct avec notre Galerie Parisienne</h2>
+{% include "presentation.html" %}
+<h2>Témoignages de nos visiteurs</h2>
+<div class="testimonials">
+    <div class="testimonial">
+        <p class="testimonial-content">J’aime ce nouveau système, il me permet de participer dans la vie de la galerie et d’apprécier des oeuvres que je ne connaissais pas.</p>
+        <p class="testimonial-name">Paul</p>
+    </div>
+    <div class="testimonial">
+        <p class="testimonial-content">Super idée ! J’adore le concept que nous apporte la galerie, avec ma famille nous y allons plus régulièrement afin de découvrir de nouvelles oeuvres.</p>
+        <p class="testimonial-name">Jade</p>
+    </div>
+</div>
+{% endblock content %}

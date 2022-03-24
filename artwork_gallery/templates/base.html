@@ -1,66 +1,58 @@
-<!DOCTYPE html>
-{% load static %} {% load i18n %}
+<!doctype html> {% load static %}
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="{% static 'css/pico.min.css' %}" />
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/pico.min.css' %}" />
+  
     <link rel="stylesheet" href="{% static 'css/global.css' %}" />
     {% block links %}{% endblock links %}
-
+  
     <title>Galerie du numérique</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <div class="logo">
-        {% load static %}
-        <img
-          src="{% static 'images/Logo.png' %}"
-          alt="La Galerie du Numérique"
-        />
-      </div>
-      <nav class="container-fluid">
-        <ul>
-          <li><a href="#">{% trans "Accueil" %}</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'galery' %}">{% trans "Galerie" %}</a></li>
-          <li><a href="{% url 'logout'%}">{% trans "Déconnexion" %}</a></li>
-          {% else %}
-          <li><a href="{% url 'login' %}">{% trans "Connexion" %}</a></li>
-          {% endif %}
-        </ul>
-      </nav>
+        <div class="logo">
+            {% load static %}
+            <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+        </div>
+        <nav class="container-fluid">
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'gallery' %}">Galerie</a></li>
+                    <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}" class="connect">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </header>
     {% block hero %}{% endblock hero %}
-       <main class="container">
+    <main class="container">
         {% include "flash_messages.html" %}
         {% block content %}{% endblock content %}
     </main>
     <footer>
-      <div class="logo">
-        {% load static %}
-        <img
-          src="{% static 'images/Logo.png' %}"
-          alt="La Galerie du Numérique"
-        />
-      </div>
-      <ul>
-        <li>
-          <a href="/infos">Mentions légales</a>
-        </li>
-        <li>
-          <a href="/agreement">Conditions d'utilisations</a>
-        </li>
-        <li>
-          <a href="/policy">Politique de confidentialité</a>
-        </li>
-      </ul>
+        <div class="logo">
+            {% load static %}
+            <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+        </div>
+        <ul>
+            <li>
+                <a href="/infos">Mentions légales</a>
+            </li>
+            <li>
+                <a href="/agreement">Conditions d'utilisations</a>
+            </li>
+            <li>
+                <a href="/policy">Politique de confidentialité</a>
+            </li>
+        </ul>
     </footer>
-  </body>
+</body>
+
 </html>
