@@ -31,6 +31,7 @@ class Artwork(models.Model):
     artist = models.ForeignKey(Artist, null=False, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
     votes = models.ManyToManyField(User)
+    api_fetched = models.fields.BooleanField(default=False)
 
     class Meta:
         permissions = (("can_vote", "Can vote for an artwork"),)
