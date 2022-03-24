@@ -12,7 +12,7 @@ class ArtistAdmin(admin.ModelAdmin):
 
 class ArtworkAdmin(admin.ModelAdmin):
     list_display = ("title", "artist", "category")
-    exclude = ("votes", )
+    exclude = ("votes",)
 
 
 admin.site.register(Category)

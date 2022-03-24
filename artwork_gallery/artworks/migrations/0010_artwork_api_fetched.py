@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('artworks', '0009_alter_artwork_options'),
+        ("artworks", "0009_alter_artwork_options"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='artwork',
-            name='api_fetched',
+            model_name="artwork",
+            name="api_fetched",
             field=models.BooleanField(default=False),
         ),
     ]
