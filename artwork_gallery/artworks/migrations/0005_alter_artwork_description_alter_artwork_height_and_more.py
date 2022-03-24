@@ -11,7 +11,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AlterField(
-            model_name="artwork", name="description", field=models.TextField(null=True),
+            model_name="artwork",
+            name="description",
+            field=models.TextField(null=True),
         ),
         migrations.AlterField(
             model_name="artwork",
@@ -19,7 +21,9 @@ class Migration(migrations.Migration):
             field=models.CharField(max_length=10, null=True),
         ),
         migrations.AlterField(
-            model_name="artwork", name="image", field=models.TextField(null=True),
+            model_name="artwork",
+            name="image",
+            field=models.TextField(null=True),
         ),
         migrations.AlterField(
             model_name="artwork",
