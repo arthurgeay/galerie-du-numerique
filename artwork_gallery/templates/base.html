@@ -1,6 +1,6 @@
 <!doctype html> {% load static %}
 <html lang="fr">
-
+{% load i18n %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -21,12 +21,12 @@
         </div>
         <nav class="container-fluid">
             <ul>
-                <li><a href="/">Accueil</a></li>
+                <li><a href="/">{% trans 'Accueil' %}</a></li>
                 {% if user.is_authenticated %}
-                    <li><a href="{% url 'gallery' %}">Galerie</a></li>
-                    <li><a href="{% url 'logout'%}">Déconnexion</a></li>
+                    <li><a href="{% url 'gallery' %}">{% trans 'Galerie' %}</a></li>
+                    <li><a href="{% url 'logout'%}">{% trans 'Déconnexion' %}</a></li>
                 {% else %}
-                    <li><a href="{% url 'login' %}" class="connect">Connexion</a></li>
+                    <li><a href="{% url 'login' %}" class="connect">{% trans 'Connexion'%}</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -43,13 +43,13 @@
         </div>
         <ul>
             <li>
-                <a href="/infos">Mentions légales</a>
+                <a href="/infos">{% trans 'Mentions légales' %}</a>
             </li>
             <li>
-                <a href="/agreement">Conditions d'utilisations</a>
+                <a href="/agreement">{% trans "Conditions d'utilisations" %}</a>
             </li>
             <li>
-                <a href="/policy">Politique de confidentialité</a>
+                <a href="/policy">{% trans "Politique de confidentialité" %}</a>
             </li>
         </ul>
     </footer>

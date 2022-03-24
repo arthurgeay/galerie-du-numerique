@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 16:50+0100\n"
+"POT-Creation-Date: 2022-03-24 10:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,16 +47,16 @@ msgstr "Login"
 msgid "Votez pour votre oeuvre favorite !"
 msgstr "Vote for your favorite piece !"
 
-#: authentication/templates/authentication/login.html:15
+#: authentication/templates/authentication/login.html:18
 #: authentication/templates/password-reset/password_reset_form.html:15
 msgid "Se connecter"
 msgstr "Login"
 
-#: authentication/templates/authentication/login.html:18
+#: authentication/templates/authentication/login.html:21
 msgid "Vous n'avez aucun compte ? Inscrivez-vous"
 msgstr "You don't have an account ? Sign up"
 
-#: authentication/templates/authentication/login.html:19
+#: authentication/templates/authentication/login.html:22
 #: authentication/templates/password-reset/password_reset_done.html:5
 #: authentication/templates/password-reset/password_reset_form.html:5
 msgid "Mot de passe oublié"
@@ -90,10 +90,10 @@ msgstr "Email"
 msgid "Envoyer"
 msgstr "Reset"
 
-#: authentication/views.py:21
+#: authentication/views.py:22
 msgid "Bonjour, {}! Vous êtes connecté"
 msgstr "Hello, {}! You are logged in"
 
-#: authentication/views.py:24
+#: authentication/views.py:25
 msgid "Identifiants invalides"
 msgstr "Unvalid credentials"
