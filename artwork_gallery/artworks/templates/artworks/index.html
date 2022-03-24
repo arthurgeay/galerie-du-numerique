@@ -3,17 +3,20 @@
 <h1>Galerie</h1>
 {% include "presentation.html" %}
 <div class="separator"></div>
-{% if artworks|length > 0 %}
+
 <div class="controls">
     <button id="sort">Trier</button>
-    <select id="filter">
-        <option value="" selected>Filtrer</option>
-        {% for category in categories %}
-        <option value="{{ category.name }}">{{ category.name }}</option>
-        {% endfor %}
-    </select>
+
+    <form method="GET" id="category_form" action="">
+        <select id="filter" name="category">
+            <option value="" selected>Filtrer</option>
+            {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
 </div>
-{% endif %}
 
 <div class="gallery">
     <ul class="art-list">
@@ -43,4 +46,5 @@
     <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a> {% endif %} {% if artworks.has_next %}
     <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a> {% endif %}
 </div>
+<script src="{% static 'js/filterArtworks.js' %}"></script>
 {% endblock content %}
