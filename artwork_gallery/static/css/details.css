@@ -8,11 +8,16 @@
 }
 
 .artwork-heading strong {
-    margin-left: 30px;
+    margin-right: 2rem;
 }
 
 .artwork-container {
     display: flex;
+}
+
+.detail-author-infos {
+    display: flex;
+    flex-direction: column;
 }
 
 .detail-author {
@@ -30,6 +35,7 @@
 
 .detail-author-img {
     width: 5rem;
+    margin-right: 1rem;
 }
 
 .detail-author img {
@@ -61,6 +67,8 @@
 .img-description img {
     object-fit: contain;
     width: 100%;
+    margin: 0;
+    height: 100%;
 }
 
 .img-description p {
