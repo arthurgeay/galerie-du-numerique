@@ -46,6 +46,5 @@
     <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a> {% endif %} {% if artworks.has_next %}
     <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a> {% endif %}
 </div>
-<script src="{% static 'js/filterArtworks.js' %}"></script>
-<script src="{% static 'js/sortArtworks.js' %}"></script>
+<script src="{% static 'js/sortAndFilterArtworks.js' %}"></script>
 {% endblock content %}
