@@ -84,6 +84,15 @@ header ul {
     flex-direction: column;
 }
 
+.title,
+footer a,
+.art-item::after,
+.art-item-infos p,
+.square-infos,
+nav a {
+    color: #FFFFFF;
+}
+
 .logo {
     max-width: 10rem;
     object-fit: contain;
@@ -148,7 +157,7 @@ h3 {
 }
 
 .connect {
-    background-color: var(--color);
+    background-color: #FFFFFF;
     color: var(--primary);
     padding: 0.3rem 0.5rem;
     margin: 0 0.5rem;
