@@ -25,13 +25,53 @@ jobs:
         run: pip install --upgrade pip && pip install -r requirements.txt
 
       - name: Check Syntax
-        run: cd artwork_gallery && black --check --verbose .
+        run: cd artwork_gallery_project && black --check --verbose .
+
+  tests:
+    name: "‍🧪️ Tests"
+    runs-on: ubuntu-latest
+    needs: [analyze]
+
+    services:
+      database:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup python environment
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install requirements
+        run: pip install --upgrade pip && pip install -r requirements.txt
+
+      - run: cd artwork_gallery_project && python manage.py collectstatic --no-input && coverage run --source='.' manage.py test && coverage report
+        env:
+          DB_NAME: postgres
+          DB_HOST: localhost
+          DB_PORT: 5432
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DEBUG: False
+          ALLOWED_HOSTS: http://localhost
 
   deployToProd:
     name: "🚀 Deploy to prod env"
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    needs: [analyze]
+    needs: [analyze, tests]
 
     steps:
       - uses: actions/checkout@v2

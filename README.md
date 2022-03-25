@@ -24,7 +24,7 @@ env/Scripts/Activate.ps1
  pip install -r requirements.txt
 
 # Se déplacer dans le dossier du projet
-cd artwork_gallery
+cd artwork_gallery_project
 
 # Base de données - Ce projet utilise PostgreSQL
 
@@ -78,6 +78,26 @@ black .
 
 Pour lancer l'analyseur manuellement
 ```sh
-cd artwork_gallery  
+cd artwork_gallery_project 
 black --check --verbose .
+```
+
+## Tests
+```sh 
+# Lancer les tests
+python manage.py collectstatic --no-input && python manage.py test
+
+# Lancer les tests + la couverture de code
+python manage.py collectstatic --no-input && coverage run --source='.' manage.py test && coverage report
+```
+
+## Commandes personnalisées
+- Supprimer les votes hebdomadaires
+```sh
+python manage.py delete_votes
+```
+
+- Mettre à jour les données
+```sh
+python manage.py fetch_missing_data
 ```

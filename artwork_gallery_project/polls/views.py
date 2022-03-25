@@ -8,8 +8,7 @@ from django.contrib import messages
 @login_required()
 @permission_required("artworks.can_vote")
 def add_vote(request, id):
-
-    if request.POST:
+    if request.method == "POST":
         artwork = get_object_or_404(Artwork, pk=id)
         artwork.votes.add(request.user)
         messages.add_message(
@@ -19,5 +18,4 @@ def add_vote(request, id):
                 artwork.title
             ),
         )
-
     return redirect("artwork_detail", id)
