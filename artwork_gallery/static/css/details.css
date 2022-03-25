@@ -8,7 +8,16 @@
 }
 
 .artwork-heading strong {
-    margin-left: 30px;
+    margin-right: 2rem;
+}
+
+.artwork-container {
+    display: flex;
+}
+
+.detail-author-infos {
+    display: flex;
+    flex-direction: column;
 }
 
 .detail-author {
@@ -24,6 +33,11 @@
     margin-bottom: 0;
 }
 
+.detail-author-img {
+    width: 5rem;
+    margin-right: 1rem;
+}
+
 .detail-author img {
     width: 80px;
     height: 80px;
@@ -33,17 +47,32 @@
 
 .justify-text {
     text-align: justify;
+    width: 50%;
 }
 
 .img-description {
     display: flex;
     justify-content: space-between;
+    width: 50%;
 }
 
-.img-description img,
-.img-description p,
-.detail-author {
-    width: 45%;
+.img-description-infos {
+    margin-right: 2rem;
+}
+
+.img-description-container {
+    width: 100%;
+}
+
+.img-description img {
+    object-fit: contain;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+}
+
+.img-description p {
+    width: 100%;
 }
 
 .artwork-heading {
@@ -106,8 +135,19 @@
         margin-left: 30px;
         width: inherit;
     }
+    .artwork-container {
+        flex-direction: column;
+    }
     .artwork-content {
         display: flex;
         flex-direction: column-reverse;
+    }
+    .img-description,
+    .justify-text {
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .img-description-infos {
+        margin-right: 0;
     }
 }

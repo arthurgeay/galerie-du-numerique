@@ -5,43 +5,53 @@
 <div class="artwork-content">
     <div class="artwork-heading">
         <div>
-            <p>Date <strong>{{artwork.released_at|default_if_none:"Donnée inconnue"}}</strong></p>
+            <p><strong>Date</strong> {{artwork.released_at|default_if_none:"Donnée inconnue"}}</p>
             {% if artwork.width and artwork.height %}
-            <p>Taille <strong>{{artwork.width}}cm x {{artwork.height}}cm</strong></p>
+            <p><strong>Taille</strong> {{artwork.width}}cm x {{artwork.height}}cm</p>
             {% else %}
             <p>Taille Inconnue</p>
             {% endif %}
-            <p>Lieu <strong>{{artwork.location|default_if_none:"Donnée inconnue"}}</strong></p>
+            <p><strong>Lieu</strong> {{artwork.location|default_if_none:"Donnée inconnue"}}</p>
         </div>
-            {% if user.is_superuser != True %}
-                <div class="vote">
-                    <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
-                    </legend>
-                    <form method="POST" action="{% url 'add_vote' artwork.id %}">
-                        {% csrf_token %}
-                        <button type="submit">Voter</button>
-                    </form>
-                </div>
-            {% endif %}
-    </div>
-
-    <div class="img-description">
-        {% if artwork.image %}
-        <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid"> {% else %}
-        <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid"> {% endif %}
-        <p class="justify-text">{{artwork.description}}</p>
-    </div>
-</div>
-<div class="detail-author">
-    {% if artwork.artist.image %}
-    <img src="{{ artwork.artist.image }}" alt="{{ artwork.artist.name }}" class="img-fluid"> {% else %}
-    <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error"> {% endif %}
-    <div>
-        <h3>{{ artwork.artist.name }}</h3>
-        {% if artwork.artist.birthday and artwork.artist.deathday %}
-        <legend>{{ artwork.artist.birthday }} - {{ artwork.artist.deathday }}</legend>
+        {% if user.is_superuser != True %}
+        <div class="vote">
+            <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
+            </legend>
+            <form method="POST" action="{% url 'add_vote' artwork.id %}">
+                {% csrf_token %}
+                <button type="submit">Voter</button>
+            </form>
+        </div>
         {% endif %}
     </div>
+
+    <div class="artwork-container">
+        <div class="img-description">
+            <div class="img-description-infos">
+                <div class="img-description-container">
+                    {% if artwork.image %}
+                    <img src="{{ artwork.image }}" alt="{{ artwork.title }}" class="img-fluid"> {% else %}
+                    <img src="{% static 'images/404.png' %}" alt="{{ artwork.title }}" class="img-fluid"> {% endif %}
+                </div>
+                <div class="detail-author">
+                    <div class="detail-author-img">
+                        {% if artwork.artist.image %}
+                        <img src="{{ artwork.artist.image }}" alt="{{ artwork.artist.name }}" class="img-fluid"> {% else %}
+                        <img src="{% static 'images/404.png' %}" alt="404 image" class="img-error"> {% endif %}
+                    </div>
+                    <div class="detail-author-infos">
+                        <h3>{{ artwork.artist.name }}</h3>
+                        {% if artwork.artist.birthday and artwork.artist.deathday %}
+                        <legend>{{ artwork.artist.birthday }} - {{ artwork.artist.deathday }}</legend>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="justify-text">{{artwork.description|safe|default:"Donnée introuvable"}}</p>
+    </div>
 </div>
+</div>
+
 
 {% endblock content %}

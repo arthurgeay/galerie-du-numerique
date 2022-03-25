@@ -46,6 +46,8 @@ DB_PORT=5432
 DEBUG=True
 EMAIL_USER=
 EMAIL_PASSWORD=
+MEDIAWIKI_ACCESS_CODE=
+MEDIAWIKI_SECRET_CODE=
 
 #Exécuter les migrations
 python manage.py migrate 
