@@ -10,10 +10,14 @@ from django.contrib import messages
 def add_vote(request, id):
     if request.method == "POST":
         artwork = get_object_or_404(Artwork, pk=id)
+
+        if request.user in artwork.votes.all():
+            messages.error(request, "Vous avez déjà voté pour cette oeuvre.")
+            return redirect("artwork_detail", id=id)
+
         artwork.votes.add(request.user)
-        messages.add_message(
+        messages.success(
             request,
-            messages.SUCCESS,
             "Votre vote a bien été pris en compte pour l'oeuvre {}.".format(
                 artwork.title
             ),

@@ -13,7 +13,7 @@
             {% endif %}
             <p><strong>Lieu</strong> {{artwork.location|default_if_none:"Donnée inconnue"}}</p>
         </div>
-        {% if user.is_superuser != True %}
+        {% if user.is_superuser != True and not is_already_voted %}
         <div class="vote">
             <legend class="right-text">Votez pour votre oeuvre favorite pour qu'elle puisse être exposée cette semaine !
             </legend>
