@@ -48,6 +48,7 @@ EMAIL_USER=
 EMAIL_PASSWORD=
 MEDIAWIKI_ACCESS_CODE=
 MEDIAWIKI_SECRET_CODE=
+ALLOWED_HOSTS=
 
 #Exécuter les migrations
 python manage.py migrate 
