@@ -24,7 +24,7 @@ env/Scripts/Activate.ps1
  pip install -r requirements.txt
 
 # Se déplacer dans le dossier du projet
-cd artwork_gallery
+cd artwork_gallery_project
 
 # Base de données - Ce projet utilise PostgreSQL
 
@@ -78,6 +78,6 @@ black .
 
 Pour lancer l'analyseur manuellement
 ```sh
-cd artwork_gallery  
+cd artwork_gallery_project 
 black --check --verbose .
 ```
