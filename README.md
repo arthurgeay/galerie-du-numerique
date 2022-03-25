@@ -85,10 +85,10 @@ black --check --verbose .
 ## Tests
 ```sh 
 # Lancer les tests
-python manage.py test
+python manage.py collectstatic --no-input && python manage.py test
 
 # Lancer les tests + la couverture de code
-coverage run --source='.' manage.py test && coverage report
+python manage.py collectstatic --no-input && coverage run --source='.' manage.py test && coverage report
 ```
 
 ## Commandes personnalisées

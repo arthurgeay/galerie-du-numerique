@@ -32,20 +32,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: [analyze]
 
-    env:
-      DB_NAME: postgres
-      DB_HOST: localhost
-      DB_POST: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-
     services:
       database:
         image: postgres
         ports:
           - 5432:5432
         env:
-          POSTGRES_PASSWORD: ${{env.DB_PASSWORD}}
+          POSTGRES_PASSWORD: postgres
 
     steps:
       - name: Checkout code
@@ -61,6 +54,13 @@ jobs:
 
       - name: Run tests
         run: cd artwork_gallery_project && coverage run --source='.' manage.py test && coverage report
+        env:
+          DB_NAME: postgres
+          DB_HOST: localhost
+          DB_POST: 5432
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+          DEBUG: False
 
   deployToProd:
     name: "🚀 Deploy to prod env"
