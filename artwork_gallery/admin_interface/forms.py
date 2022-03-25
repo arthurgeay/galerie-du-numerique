@@ -21,3 +21,12 @@ class UpdateForm(forms.Form):
     lieu = forms.CharField(max_length=100)
     date_realisation = forms.CharField
     description = forms.CharField()
+
+class CreateArtistForm(forms.Form):
+    """
+    Form for adding the artist information.
+    """
+    nom = forms.CharField(max_length=100)
+    image = forms.CharField(max_length=500)
+    date_naissance = forms.CharField()
+    date_mort = forms.CharField()
