@@ -5,7 +5,9 @@
 <div class="separator"></div>
 
 <div class="controls">
-    <button id="sort">Trier</button>
+    <button id="sort">
+        Trier<img src="{% static 'images/bi_sort-numeric-down.png' %}" alt="">
+    </button>
 
     <select id="filter" name="category">
         <option value="" selected>Filtrer</option>
@@ -29,6 +31,7 @@
                     <p class="art-item-title">{{ artwork.title }}</p>
                     <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
                     <p class="art-item-author">{{ artwork.artist.name }}</p>
+                    <p class="art-item-votes">{{ artwork.votes.all.count }} vote{% if artwork.votes.all.count > 1 %}s{% endif %}</p>
                 </div>
             </a>
         </li>
@@ -44,4 +47,5 @@
     <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a> {% endif %}
 </div>
 <script src="{% static 'js/filterArtworks.js' %}"></script>
+<script src="{% static 'js/sortArtworks.js' %}"></script>
 {% endblock content %}
