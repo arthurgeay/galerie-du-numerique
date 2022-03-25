@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required, permission_required
 from admin_interface.forms import CreateForm, UpdateForm, CreateArtistForm
 from django.core.paginator import Paginator
@@ -14,8 +14,9 @@ def create_artwork(request):
 @login_required()
 @permission_required("artworks.can_change")
 def edit_artwork(request, artwork_id):
-    form = UpdateForm()
-    return render(request,  "admin_interface/edit_artwork.html", {'form': form})
+    artwork = Artwork.objects.get(id=artwork_id)
+    form = UpdateForm(instance=artwork)
+    return render(request, "admin_interface/edit_artwork.html", {'form': form})
 
 @login_required()
 @permission_required("artworks.can_add")
