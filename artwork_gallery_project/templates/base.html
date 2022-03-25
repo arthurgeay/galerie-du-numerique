@@ -32,7 +32,8 @@
     </header>
     {% block hero %}{% endblock hero %}
     <main class="container">
-        {% include "flash_messages.html" %} {% block content %}{% endblock content %}
+        {% include "flash_messages.html" %}
+        {% block content %}{% endblock content %}
     </main>
     <footer>
         <div class="logo">

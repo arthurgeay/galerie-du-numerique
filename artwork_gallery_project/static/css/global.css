@@ -246,7 +246,7 @@ strong {
     text-align: right;
 }
 
-.alert {
+.alert, .errorlist {
     padding: 1rem;
     margin-bottom: 2rem;
 }
@@ -255,10 +255,14 @@ strong {
     background: #2e7d32;
 }
 
-.alert.error {
+.alert.error, .errorlist {
     background: #a41515;
 }
 
 .alert.info {
     background: #3d888f;
+}
+
+.errorlist li {
+    list-style: none;
 }
