@@ -1,0 +1,89 @@
+.artworks-content {
+    display: flex;
+}
+
+.artworks-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+
+.artworks-item {
+    background-color: var(--card);
+    list-style-type: none;
+    display: flex;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.artwork-img {
+    width: 7rem;
+    height: 7rem;
+    min-width: 7rem
+}
+
+.artwork-img img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+}
+
+.artwork-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.artwork-author {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.artwork-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.artwork-actions button {
+    font-size: .7rem;
+    margin: 0;
+}
+
+.artwork-actions-delete {
+    background-color: #b7b7b7;
+    border: none;
+}
+
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .artworks-item {
+        flex-direction: column;
+    }
+    .artwork-actions {
+        flex-direction: row;
+    }
+    .artwork-actions button {
+        margin-bottom: 0;
+    }
+    .artwork-title {
+        margin-bottom: .5rem;
+    }
+    .artwork-infos {
+        margin: 1rem 0;
+    }
+}
+
+@media (min-width: 600px) {
+    .artwork-actions button:first-of-type {
+        margin-bottom: 1rem;
+    }
+    .artwork-infos {
+        margin-left: 1.5rem;
+        margin-right: auto;
+    }
+}
