@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
 from admin_interface.forms import CreateForm, UpdateForm, CreateArtistForm
+from django.core.paginator import Paginator
+from artworks.models import Artwork, Artist
 
 
 @login_required()
@@ -24,4 +26,10 @@ def create_artist(request):
 @login_required()
 @permission_required("artworks.can_view")
 def view_artworks(request):
-    return render(request, "admin_interface/view_artworks.html")
+    artwork_list = Artwork.objects.all()
+
+    paginator = Paginator(artwork_list, 4)
+    page = request.GET.get("page")
+    artworks = paginator.get_page(page)
+
+    return render(request, "admin_interface/view_artworks.html", {"artworks": artworks})

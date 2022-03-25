@@ -3,32 +3,21 @@
 <h1>Liste des oeuvres</h1>
 <div class="artworks-content">
     <ul class="artworks-list">
+        {% for artwork in artworks %}
         <li class="artworks-item">
             <div class="artwork-img">
-                <img src="https://i5j2x9p5.rocketcdn.me/wp-content/uploads/2020/07/vague-kanagawa-1.jpg" alt="">
+                <img src="{{ artwork.image }}" alt="">
             </div>
             <div class="artwork-infos">
-                <h2 class="artwork-title">Titre de l'oeuvre</h2>
-                <p class="artwork-author">Auteur de l'oeuvre</p>
+                <h2 class="artwork-title">{{ artwork.title }}</h2>
+                <p class="artwork-author">{{ artwork.artist }}</p>
             </div>
             <div class="artwork-actions">
-                <a href="/admin/edit"><button class="artwork-actions-update">Modifier</button></a>
+                <a href="/admin/edit/{{ artwork.id }}"><button class="artwork-actions-update">Modifier</button></a>
                 <button class="artwork-actions-delete">Supprimer</button>
             </div>
         </li>
-        <li class="artworks-item">
-            <div class="artwork-img">
-                <img src="https://i5j2x9p5.rocketcdn.me/wp-content/uploads/2020/07/vague-kanagawa-1.jpg" alt="">
-            </div>
-            <div class="artwork-infos">
-                <h2 class="artwork-title">Titre de l'oeuvre</h2>
-                <p class="artwork-author">Auteur de l'oeuvre</p>
-            </div>
-            <div class="artwork-actions">
-                <button class="artwork-actions-update">Modifier</button>
-                <button class="artwork-actions-delete">Supprimer</button>
-            </div>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock content %}
