@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
+<h1>Liste des oeuvres</h1>
+<div class="artworks-content">
+    <ul class="artworks-list">
+        <li class="artworks-item"></li>
+    </ul>
+</div>
+{% endblock content %}

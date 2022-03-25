@@ -1,6 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.urls import path
-from admin import views
+from admin_interface import views
 
 urlpatterns = [
     path("", views.view_artworks, name="view_artworks"),

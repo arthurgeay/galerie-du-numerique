@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "authentication",
     "artworks",
     "polls",
+    "admin_interface"
 ]
 
 MIDDLEWARE = [
