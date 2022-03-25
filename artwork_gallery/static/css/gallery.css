@@ -63,12 +63,14 @@
     font-weight: bold;
 }
 
-.art-item-date {
+.art-item-date,
+.art-item-votes {
     align-self: flex-end;
     text-align: right;
 }
 
-.art-item-author {
+.art-item-author,
+.art-item-votes {
     margin-bottom: 0;
     margin-top: -1rem;
 }
@@ -81,4 +83,9 @@
 
 .pagination a {
     width: 100%;
+}
+
+#sort img {
+    width: 30px;
+    margin-left: 1rem;
 }
