@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required, permission_required
-from admin_interface.forms import CreateForm
+from admin_interface.forms import CreateForm, UpdateForm
 
 
 @login_required()
@@ -12,7 +12,7 @@ def create_artwork(request):
 @login_required()
 @permission_required("artworks.can_change")
 def edit_artwork(request, artwork_id):
-    form = CreateForm()
+    form = UpdateForm()
     return render(request,  "admin_interface/edit_artwork.html", {'form': form})
 
 @login_required()
