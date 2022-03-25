@@ -58,6 +58,17 @@
 }
 
 
+/* Forms */
+
+.artworks-content,
+.artist-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+
+
 /* Responsive */
 
 @media (max-width: 600px) {
