@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
+<h1>Ajouter une oeuvre</h1>
+<div class="artworks-content">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="title">Titre</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Titre de l'oeuvre" required>
+        </div>
+        <div class="form-group">
+            <label for="artist">Artiste</label>
+            <input type="text" class="form-control" id="artist" name="artist" placeholder="Artiste" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Année</label>
+            <input type="number" class="form-control" id="year" name="year" placeholder="Année" required>
+        </div>
+        <div class="form-group">
+            <label for="technique">Technique</label>
+            <input type="text" class="form-control" id="technique" name="technique" placeholder="Technique" required>
+        </div>
+        <div class="form-group">
+            <label for="dimensions">Dimensions</label>
+            <input type="text" class="form-control" id="dimensions" name="dimensions" placeholder="Dimensions" required>
+        </div>
+        <div class="form-group">
+            <label for="price">Prix</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Prix" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" placeholder="Description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input type="file" class="form-control-file" id="image" name="image" required>
+        </div </div>
+        {% endblock content %}

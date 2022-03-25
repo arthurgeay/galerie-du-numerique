@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 @login_required()
 @permission_required("artworks.can_add")
 def create_artwork(request):
+    
     return render(request, "admin_interface/create_artwork.html")
 
 @login_required()
