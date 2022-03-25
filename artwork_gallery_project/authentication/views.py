@@ -5,31 +5,6 @@ from django.contrib.auth.models import Group
 from . import forms
 
 
-def login_page(request):
-    form = forms.LoginForm()
-    message = ""
-    if request.method == "POST":
-        form = forms.LoginForm(request.POST)
-        if form.is_valid():
-            user = authenticate(
-                username=form.cleaned_data["username"],
-                password=form.cleaned_data["password"],
-            )
-            if user is not None:
-                login(request, user)
-                return redirect("gallery")
-            else:
-                message = "Identifiants invalides"
-    return render(
-        request, "authentication/login.html", {"form": form, "message": message}
-    )
-
-
-def logout_user(request):
-    logout(request)
-    return redirect("login")
-
-
 def signup_page(request):
     form = forms.SignupForm()
     if request.method == "POST":

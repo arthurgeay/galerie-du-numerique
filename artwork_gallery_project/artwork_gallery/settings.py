@@ -109,6 +109,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Redirect URL default for login required
 LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "gallery"
+LOGOUT_REDIRECT_URL = "login"
 
 
 # Email

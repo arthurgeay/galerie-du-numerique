@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
 
 class RegisterTest(TestCase):
@@ -96,7 +98,10 @@ class LoginTest(TestCase):
             self.login_url,
             {"username": self.user["username"], "password": self.user["password1"]},
         )
-        self.assertContains(response, "Identifiants invalides")
+        self.assertContains(
+            response,
+            "Saisissez un nom d’utilisateur et un mot de passe valides. Remarquez que chacun de ces champs est sensible à la casse (différenciation des majuscules/minuscules).",
+        )
 
     def test_can_login_user(self):
         self.client.post(self.register_url, self.user)
@@ -108,3 +113,20 @@ class LoginTest(TestCase):
 
         self.assertTrue(response.context["user"].is_authenticated)
         self.assertEqual(response.resolver_match.url_name, "gallery")
+
+
+class LogoutTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(
+            username="testuser", password="superPassw0rd"
+        )
+        customer_group = Group.objects.get(name="customers")
+        self.user.groups.add(customer_group)
+
+    def test_can_logout_user(self):
+        self.client.login(username="testuser", password="superPassw0rd")
+        response = self.client.get(reverse("logout"), follow=True)
+
+        self.assertFalse(response.context["user"].is_authenticated)
+        self.assertEqual(response.resolver_match.url_name, "login")
