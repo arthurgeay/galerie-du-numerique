@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.test import Client
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class RegisterTest(TestCase):
@@ -75,4 +76,35 @@ class RegisterTest(TestCase):
         self.assertTrue(response.context['user'].is_authenticated)
         self.assertEqual(response.resolver_match.url_name, 'gallery')
 
+
+class LoginTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+        self.register_url = reverse('signup')
+        self.login_url = reverse('login')
+        self.user = {
+            "username": "JOhn",
+            "email": "john@doe.com",
+            "password1": "mysupers3cretPassw0rd",
+            "password2": "mysupers3cretPassw0rd",
+        }
+
+    def test_can_view_page_correctly(self):
+        response = self.client.get(self.login_url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_can_login_user_with_bad_credentials(self):
+        response = self.client.post(self.login_url, {"username": self.user['username'], "password": self.user['password1']})
+        self.assertContains(response, 'Identifiants invalides')
+
+    def test_can_login_user(self):
+        self.client.post(self.register_url, self.user)
+        response = self.client.post(
+            self.login_url,
+            {"username": self.user['username'], "password": self.user['password1']},
+            follow=True
+        )
+
+        self.assertTrue(response.context['user'].is_authenticated)
+        self.assertEqual(response.resolver_match.url_name, 'gallery')
 
