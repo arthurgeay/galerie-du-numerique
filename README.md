@@ -81,3 +81,23 @@ Pour lancer l'analyseur manuellement
 cd artwork_gallery_project 
 black --check --verbose .
 ```
+
+## Tests
+```sh 
+# Lancer les tests
+python manage.py test
+
+# Lancer les tests + la couverture de code
+coverage run --source='.' manage.py test && coverage report
+```
+
+## Commandes personnalisées
+- Supprimer les votes hebdomadaires
+```sh
+python manage.py delete_votes
+```
+
+- Mettre à jour les données
+```sh
+python manage.py fetch_missing_data
+```
