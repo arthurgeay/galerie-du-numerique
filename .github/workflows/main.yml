@@ -39,6 +39,11 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - name: Checkout code
@@ -52,15 +57,15 @@ jobs:
       - name: Install requirements
         run: pip install --upgrade pip && pip install -r requirements.txt
 
-      - name: Run tests
-        run: cd artwork_gallery_project && coverage run --source='.' manage.py test && coverage report
+      - run: cd artwork_gallery_project && python manage.py collectstatic --no-input && coverage run --source='.' manage.py test && coverage report
         env:
           DB_NAME: postgres
           DB_HOST: localhost
-          DB_POST: 5432
+          DB_PORT: 5432
           DB_USER: postgres
           DB_PASSWORD: postgres
           DEBUG: False
+          ALLOWED_HOSTS: http://localhost
 
   deployToProd:
     name: "🚀 Deploy to prod env"
