@@ -66,6 +66,8 @@ jobs:
           DB_PASSWORD: postgres
           DEBUG: False
           ALLOWED_HOSTS: http://localhost
+          MEDIAWIKI_ACCESS_CODE: ${{ secrets.MEDIAWIKI_ACCESS_CODE }}
+          MEDIAWIKI_SECRET_CODE: ${{ secrets.MEDIAWIKI_SECRET_CODE }}
 
   deployToProd:
     name: "🚀 Deploy to prod env"
