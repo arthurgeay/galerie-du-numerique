@@ -43,19 +43,19 @@ class RegisterTest(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    def test_can_register_user_with_existing_username(self):
+    def test_cannot_register_user_with_existing_username(self):
         self.client.post(self.register_url, self.user)
         response = self.client.post(self.register_url, self.user)
 
         self.assertContains(response, "Un utilisateur avec ce nom existe déjà.")
 
-    def test_can_register_user_with_email_invalid(self):
+    def test_cannot_register_user_with_email_invalid(self):
         self.client.post(self.register_url, self.user)
         response = self.client.post(self.register_url, self.user_email_invalid)
 
         self.assertContains(response, "Saisissez une adresse de courriel valide.")
 
-    def test_can_register_user_with_short_password(self):
+    def test_cannot_register_user_with_short_password(self):
         self.client.post(self.register_url, self.user)
         response = self.client.post(self.register_url, self.user_short_password)
 
@@ -64,7 +64,7 @@ class RegisterTest(TestCase):
             "Ce mot de passe est trop court. Il doit contenir au minimum 8 caractères.",
         )
 
-    def test_can_register_user_with_not_same_password(self):
+    def test_cannot_register_user_with_not_same_password(self):
         self.client.post(self.register_url, self.user)
         response = self.client.post(self.register_url, self.user_not_same_password)
 
@@ -93,7 +93,7 @@ class LoginTest(TestCase):
         response = self.client.get(self.login_url)
         self.assertEqual(response.status_code, 200)
 
-    def test_can_login_user_with_bad_credentials(self):
+    def test_cannot_login_user_with_bad_credentials(self):
         response = self.client.post(
             self.login_url,
             {"username": self.user["username"], "password": self.user["password1"]},

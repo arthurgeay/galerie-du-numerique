@@ -16,7 +16,7 @@ class GalleryTest(TestCase):
             username=self.user["username"], password=self.user["password"]
         )
 
-    def test_can_view_gallery_page_without_user_logged(self):
+    def test_cannot_view_gallery_page_without_user_logged(self):
         response = self.client.get(self.gallery_url, follow=True)
         self.assertEqual(response.resolver_match.url_name, "login")
 
@@ -47,7 +47,7 @@ class ArtworkTest(TestCase):
             username=self.user["username"], password=self.user["password"]
         )
 
-    def test_can_view_artwork_page_without_user_logged(self):
+    def test_cannot_view_artwork_page_without_user_logged(self):
         response = self.client.get(self.artwork_url, follow=True)
         self.assertEqual(response.resolver_match.url_name, "login")
 
@@ -60,7 +60,7 @@ class ArtworkTest(TestCase):
         self.assertEqual(response.resolver_match.url_name, "artwork_detail")
         self.assertContains(response, "Test Artwork")
 
-    def test_can_view_artwork_not_exist(self):
+    def test_cannot_view_artwork_not_exist(self):
         self.client.login(
             username=self.user["username"], password=self.user["password"]
         )
