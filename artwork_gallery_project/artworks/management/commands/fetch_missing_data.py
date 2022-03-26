@@ -4,19 +4,25 @@ from django.core.management.base import BaseCommand
 from artworks.models import Artwork
 import environ
 import bbcode
-import urllib.parse
+
+from artworks.services.wikiart_client import WikiArtClient
 
 
 class Command(BaseCommand):
-    help = ""
-    env = None
+    help = "Fetch missing data for artworks and artists"
 
     def __init__(self):
         self.env = environ.Env()
         environ.Env.read_env()
+        self.wiki_art_client = WikiArtClient(
+            access_code=self.env("MEDIAWIKI_ACCESS_CODE"),
+            secret_code=self.env("MEDIAWIKI_SECRET_CODE"),
+        )
 
     def handle(self, *args, **kwargs):
+
         artworks = Artwork.objects.filter(api_fetched=False)
+        artwork_updated = 0
 
         for artwork in artworks:
             data = self.getData(artwork.title)
@@ -45,41 +51,21 @@ class Command(BaseCommand):
                 artwork.artist.save()
                 artwork.save()
 
-                print("{} artworks fetched with missing data".format(artworks.count()))
+                artwork_updated += 1
+
+        print("{} artworks fetched with missing data".format(artwork_updated))
 
     def getData(self, artwork_name):
-        # Find artwork id
-        search = requests.get(
-            "https://www.wikiart.org/fr/Api/2/PaintingSearch?term={}&accessCode={}&secretCode={}".format(
-                urllib.parse.quote(artwork_name),
-                self.env("MEDIAWIKI_ACCESS_CODE"),
-                self.env("MEDIAWIKI_SECRET_CODE"),
-            )
-        )
-
-        search_result = search.json()
+        # Find artwork by name
+        search_result = self.wiki_art_client.search_artwork(artwork_name)
 
         if len(search_result["data"]) > 0:
             artwork_id = search_result["data"][-1]["id"]
             artist_url = search_result["data"][-1]["artistUrl"]
 
-            # Fetch artwork details
-            artwork_details = requests.get(
-                "https://www.wikiart.org/fr/Api/2/Painting?id={}&accessCode={}&secretCode={}".format(
-                    artwork_id,
-                    self.env("MEDIAWIKI_ACCESS_CODE"),
-                    self.env("MEDIAWIKI_SECRET_CODE"),
-                )
-            )
-
-            # Fetch artist details
-            artist_details = requests.get(
-                "https://www.wikiart.org/fr/{}?json=2".format(artist_url)
-            )
-
             return {
-                "artwork_details": artwork_details.json(),
-                "artist_details": artist_details.json(),
+                "artwork_details": self.wiki_art_client.get_artwork(artwork_id),
+                "artist_details": self.wiki_art_client.get_artist(artist_url),
             }
 
         return None

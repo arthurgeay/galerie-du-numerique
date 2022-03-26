@@ -6,6 +6,11 @@ from django.contrib.auth.models import User
 
 from artworks.models import Artist, Category, Artwork
 
+from artworks.services.client import ApiClient, ApiClientException
+
+from artworks.services.wikiart_client import WikiArtClient
+import environ
+
 
 class GalleryTest(TestCase):
     def setUp(self):
@@ -68,3 +73,58 @@ class ArtworkTest(TestCase):
         response = self.client.get(resolve_url("artwork_detail", id=9999))
         self.assertEqual(response.resolver_match.url_name, "artwork_detail")
         self.assertEqual(response.status_code, 404)
+
+
+class ApiClientTest(TestCase):
+    def setUp(self):
+        self.client = ApiClient(api_host="https://api.test.com")
+
+    def test_cannot_generate_uri_with_invalid_query_params(self):
+        with self.assertRaises(ApiClientException):
+            self.client.generate_uri("/items", "failed")
+
+    def test_can_generate_uri_without_query_params(self):
+        result = self.client.generate_uri("/items")
+        self.assertEqual(result, "https://api.test.com/items")
+
+    def test_can_generate_uri_with_query_param(self):
+        result = self.client.generate_uri("/items", {"page": 1})
+        self.assertEqual(result, "https://api.test.com/items?page=1")
+
+    def test_can_generate_uri_with_many_query_param(self):
+        result = self.client.generate_uri("/items", {"page": 1, "limit": 10})
+        self.assertEqual(result, "https://api.test.com/items?page=1&limit=10")
+
+
+class WikiArtClientTest(TestCase):
+    def setUp(self):
+        self.env = environ.Env()
+        environ.Env.read_env()
+        self.client = WikiArtClient(
+            access_code=self.env("MEDIAWIKI_ACCESS_CODE"),
+            secret_code=self.env("MEDIAWIKI_SECRET_CODE"),
+        )
+
+    def test_can_search_artwork(self):
+        result = self.client.search_artwork("joconde")
+
+        self.assertTrue("data" in result)
+        self.assertTrue("paginationToken" in result)
+        self.assertTrue("hasMore" in result)
+
+    def test_can_get_artwork_by_id(self):
+        result = self.client.get_artwork("57726fa4edc2cb3880bb2fed")
+
+        self.assertTrue("description" in result)
+        self.assertTrue("image" in result)
+        self.assertTrue("completitionYear" in result)
+        self.assertTrue("width" in result)
+        self.assertTrue("height" in result)
+        self.assertTrue("location" in result)
+
+    def test_can_get_artist_by_url(self):
+        result = self.client.get_artist("fernand-leger")
+
+        self.assertTrue("image" in result)
+        self.assertTrue("birthDayAsString" in result)
+        self.assertTrue("deathDayAsString" in result)
