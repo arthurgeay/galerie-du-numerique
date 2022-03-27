@@ -21,7 +21,7 @@ class Artist(models.Model):
 
 
 class Artwork(models.Model):
-    title = models.fields.CharField(max_length=255, unique=True)
+    title = models.fields.CharField(max_length=255)
     description = models.fields.TextField(null=True, blank=True)
     image = models.fields.TextField(null=True, blank=True)
     released_at = models.fields.CharField(max_length=4, null=True, blank=True)
@@ -35,6 +35,7 @@ class Artwork(models.Model):
 
     class Meta:
         permissions = (("can_vote", "Can vote for an artwork"),)
+        unique_together = (("title", "artist"),)
 
     def __str__(self):
         return self.title
