@@ -1,14 +1,20 @@
 from django import forms
 
 from artworks.models import Artwork
+from artworks.models import Artist
 
-class CreateForm(forms.Form):
+class CreateForm(forms.ModelForm):
     """
     Form for adding the artwork information.
     """
-    title = forms.CharField(max_length=100)
-    categorie = forms.CharField()
-    artiste = forms.CharField(max_length=100)
+    class Meta:
+        model = Artwork
+        fields = ['title', 'category', 'artist']
+        labels = {
+            "title": "Titre",
+            "category": "Catégorie",
+            "artist": "Artiste"
+        }
 
 class UpdateForm(forms.ModelForm):
     """
@@ -17,12 +23,25 @@ class UpdateForm(forms.ModelForm):
     class Meta:
         model = Artwork
         fields = ['title', 'description', 'image', 'released_at', 'width', 'height', 'location', 'category', 'artist']
+        labels = {
+            "title": "Titre",
+            "released_at": "Date de réalisation",
+            "width": "Largeur",
+            "height": "Hauteur",
+            "location": "Lieu",
+            "category": "Catégorie",
+            "artist": "Artiste"
+        }
 
-class CreateArtistForm(forms.Form):
+class CreateArtistForm(forms.ModelForm):
     """
     Form for adding the artist information.
     """
-    nom = forms.CharField(max_length=100)
-    image = forms.CharField(max_length=500)
-    date_naissance = forms.CharField()
-    date_mort = forms.CharField()
+    class Meta:
+        model = Artist
+        fields = ['name', 'image', 'birthday', 'deathday']
+        labels = {
+            "name": "Nom",
+            "birthday": "Date de naissance",
+            "deathday": "Date de mort"
+        }

@@ -170,6 +170,27 @@ h3 {
     padding: 1rem 2rem;
 }
 
+.admin-home {
+    position: relative;
+}
+
+.admin-home a {
+    font-size: .8rem;
+    padding: 1rem;
+    padding-left: 1.5rem;
+}
+
+.admin-home::after {
+    content: "◀";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
 
 /* Media queries */
 
