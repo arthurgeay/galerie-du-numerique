@@ -33,11 +33,15 @@ def edit_artwork(request, artwork_id):
         form = UpdateForm(instance=artwork)
     return render(request, "admin_interface/edit_artwork.html", {'form': form})
 
-@login_required()
-@permission_required("artworks.can_add")
-def create_artist(request):
-    form = CreateArtistForm()
-    return render(request, "admin_interface/create_artist.html", {'form': form})
+def delete_artwork(request, artwork_id):
+    artwork = Artwork.objects.get(id=artwork_id)
+
+    if request.method == 'POST':
+        artwork.delete()
+        messages.success(request, "{} a bien été supprimé.".format(artwork.title))
+        return redirect('view_artworks')
+    
+    return render(request, "admin_interface/confirm_delete_artwork.html", {'artwork': artwork})
 
 @login_required()
 @permission_required("artworks.can_view")
@@ -49,3 +53,10 @@ def view_artworks(request):
     artworks = paginator.get_page(page)
 
     return render(request, "admin_interface/view_artworks.html", {"artworks": artworks})
+
+@login_required()
+@permission_required("artworks.can_add")
+def create_artist(request):
+    form = CreateArtistForm()
+    return render(request, "admin_interface/create_artist.html", {'form': form})
+
