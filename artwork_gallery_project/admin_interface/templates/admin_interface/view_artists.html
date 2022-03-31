@@ -21,6 +21,8 @@
                 <a href="{% url 'delete_artist' artist.id %}"><button class="artwork-actions-delete">Supprimer</button></a>
             </div>
         </li>
+        {% empty %}
+            <p class="alert info">Il semblerait qu'il n'y ait aucun artiste pour le moment.</p>
         {% endfor %}
     </ul>
 </div>

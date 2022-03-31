@@ -36,8 +36,8 @@ def create_artwork(request):
 
 @login_required()
 @permission_required("artworks.can_change")
-def edit_artwork(request, artwork_id):
-    artwork = get_object_or_404(Artwork, id=artwork_id)
+def edit_artwork(request, id):
+    artwork = get_object_or_404(Artwork, id=id)
     if request.method == "POST":
         form = UpdateForm(request.POST, instance=artwork)
         if form.is_valid():
@@ -53,8 +53,8 @@ def edit_artwork(request, artwork_id):
 
 @login_required()
 @permission_required("artworks.can_delete")
-def delete_artwork(request, artwork_id):
-    artwork = get_object_or_404(Artwork, id=artwork_id)
+def delete_artwork(request, id):
+    artwork = get_object_or_404(Artwork, id=id)
 
     if request.method == "POST":
         artwork.delete()
@@ -87,7 +87,7 @@ def create_artist(request):
             form.save()
             messages.success(
                 request,
-                "L'artiste {} a bien été crée.".format(form.cleaned_data["name"]),
+                "L'artiste {} a bien été sauvegardé.".format(form.cleaned_data["name"]),
             )
             return redirect("view_artists")
     else:
@@ -97,8 +97,8 @@ def create_artist(request):
 
 @login_required()
 @permission_required("artworks.can_change")
-def edit_artist(request, artist_id):
-    artist = get_object_or_404(Artist, id=artist_id)
+def edit_artist(request, id):
+    artist = get_object_or_404(Artist, id=id)
 
     if request.method == "POST":
         form = ArtistForm(request.POST, instance=artist)
@@ -116,8 +116,8 @@ def edit_artist(request, artist_id):
 
 @login_required()
 @permission_required("artworks.can_delete")
-def delete_artist(request, artist_id):
-    artist = get_object_or_404(Artist, id=artist_id)
+def delete_artist(request, id):
+    artist = get_object_or_404(Artist, id=id)
 
     if request.method == "POST":
         artist.delete()
