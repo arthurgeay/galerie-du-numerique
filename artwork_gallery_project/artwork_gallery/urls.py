@@ -5,5 +5,5 @@ urlpatterns = [
     path("", include("presentation.urls")),
     path("artworks/", include("artworks.urls")),
     path("polls/", include("polls.urls")),
-    path("admin/", include("admin_interface.urls")),
+    path("admin/", include("admin_interface.urls"), name="admin"),
 ]
