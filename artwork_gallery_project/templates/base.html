@@ -23,11 +23,18 @@
                 <li><a href="/">Accueil</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'gallery' %}">Galerie</a></li>
-                <li><a href="{% url 'logout'%}">Déconnexion</a></li>
                 {% if user.is_superuser %}
                 <li><a href="{% url 'view_artworks' %}">Admin</a></li>
                 {% endif %} {% else %}
+                <li class="username">{{ user }}</li>
+                <li class="logout">
+                    <a href="{% url 'logout'%}">
+                        <img src="{% static 'images/logout.png' %}">Déconnexion
+                    </a>
+                </li>
+                {% else %}
                 <li><a href="{% url 'login' %}" class="connect">Connexion</a></li>
+                <li><a href="" class="">Inscription</a></li>
                 {% endif %}
             </ul>
         </nav>
