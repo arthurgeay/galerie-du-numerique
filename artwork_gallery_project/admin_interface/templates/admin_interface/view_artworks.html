@@ -1,7 +1,10 @@
 {% extends 'base.html' %} {% block links %} {% load static %}
 <link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
 <h1>Liste des oeuvres</h1>
-<button class="create-buttons"><a class="create" href="{% url 'create_artwork' %}">Créer une oeuvre</a></button>
+<div class="admin-buttons">
+    <button class="create-buttons"><a class="create" href="{% url 'create_artwork' %}">Créer une oeuvre</a></button>
+    <button class="create-buttons list-button"><a class="create list" href="{% url 'view_artists' %}">Liste des artistes</a></button>
+</div>
 <div class="artworks-content">
     <ul class="artworks-list">
         {% for artwork in artworks %}

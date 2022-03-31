@@ -5,6 +5,16 @@ from django.core.paginator import Paginator
 from artworks.models import Artwork, Artist
 from django.contrib import messages
 
+@login_required()
+@permission_required("artworks.can_view")
+def view_artworks(request):
+    artwork_list = Artwork.objects.all().order_by("-id")
+
+    paginator = Paginator(artwork_list, 4)
+    page = request.GET.get("page")
+    artworks = paginator.get_page(page)
+
+    return render(request, "admin_interface/view_artworks.html", {"artworks": artworks})
 
 @login_required()
 @permission_required("artworks.can_add")
@@ -25,7 +35,7 @@ def create_artwork(request):
 @login_required()
 @permission_required("artworks.can_change")
 def edit_artwork(request, artwork_id):
-    artwork = Artwork.objects.get(id=artwork_id)
+    artwork = get_object_or_404(Artwork, id=artwork_id)
     if request.method == "POST":
         form = UpdateForm(request.POST, instance=artwork)
         if form.is_valid():
@@ -42,7 +52,7 @@ def edit_artwork(request, artwork_id):
 @login_required()
 @permission_required("artworks.can_delete")
 def delete_artwork(request, artwork_id):
-    artwork = Artwork.objects.get(id=artwork_id)
+    artwork = get_object_or_404(Artwork, id=artwork_id)
 
     if request.method == "POST":
         artwork.delete()
@@ -55,15 +65,15 @@ def delete_artwork(request, artwork_id):
 
 
 @login_required()
-@permission_required("artworks.can_view")
-def view_artworks(request):
-    artwork_list = Artwork.objects.all().order_by("-id")
+@permission_required("artists.can_view")
+def view_artists(request):
+    artist_list = Artist.objects.all().order_by("-id")
 
-    paginator = Paginator(artwork_list, 4)
+    paginator = Paginator(artist_list, 4)
     page = request.GET.get("page")
-    artworks = paginator.get_page(page)
+    artists = paginator.get_page(page)
 
-    return render(request, "admin_interface/view_artworks.html", {"artworks": artworks})
+    return render(request, "admin_interface/view_artists.html", {"artists": artists})
 
 
 @login_required()
@@ -77,7 +87,7 @@ def create_artist(request):
                 request,
                 "L'artiste {} a bien été crée.".format(form.cleaned_data["name"]),
             )
-            return redirect("view_artworks")
+            return redirect("view_artists")
     else:
         form = ArtistForm()
     return render(request, "admin_interface/create_artist.html", {"form": form})
@@ -85,14 +95,15 @@ def create_artist(request):
 @login_required()
 @permission_required("artworks.can_change")
 def edit_artist(request, artist_id):
-    artist = Artist.objects.get(id=artist_id)
+    artist = get_object_or_404(Artist, id=artist_id)
+
 
     if request.method == "POST":
         form = ArtistForm(request.POST, instance=artist)
         if form.is_valid():
             form.save()
             messages.success(request, "L'artiste {} a bien été modifié.".format(form.cleaned_data["name"]))
-            return redirect("view_artworks")
+            return redirect("view_artists")
     else:
         form = ArtistForm(instance=artist)
     return render(request, "admin_interface/edit_artist.html", {"form": form})
@@ -100,14 +111,14 @@ def edit_artist(request, artist_id):
 @login_required()
 @permission_required("artworks.can_delete")
 def delete_artist(request, artist_id):
-    artist = Artist.objects.get(id=artist_id)
+    artist = get_object_or_404(Artist, id=artist_id)
 
     if request.method == "POST":
         artist.delete()
         messages.success(
             request, "L'artiste {} a bien été supprimé.".format(artist.name)
         )
-        return redirect("view_artworks")
+        return redirect("view_artists")
 
     return render(
         request, "admin_interface/confirm_delete_artist.html", {"artist": artist}

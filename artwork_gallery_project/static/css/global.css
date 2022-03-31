@@ -236,6 +236,11 @@ h3 {
     transform: translateY(-50%);
 }
 
+.admin-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 .create::after {
     content: "➕";
     display: block;
@@ -246,6 +251,22 @@ h3 {
     left: 1rem;
     transform: translateY(-50%);
     filter: contrast(0) brightness(200%);
+}
+
+.create.list::after {
+    content: "📄";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+    filter: contrast(0) brightness(200%);
+}
+
+.list-button {
+    background-color: var(--primary);
 }
 
 
