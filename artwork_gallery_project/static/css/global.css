@@ -133,12 +133,72 @@ nav li:not(.logout) a {
     }
 }
 
+.open,
+.close {
+    display: none;
+}
+
+.connect {
+    background-color: #FFFFFF;
+    color: var(--primary);
+    padding: 0.3rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 0;
+}
+
 @media (max-width: 600px) {
     .container-fluid {
         width: auto;
     }
+    .header-top {
+        position: relative;
+        z-index: 5;
+    }
+    header .container-fluid,
+    header nav {
+        background-color: var(--primary);
+        width: 100%;
+        position: absolute;
+        top: 4rem;
+        z-index: 2;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+    header nav.menu-open {
+        transform: translateY(0);
+    }
+    header ul {
+        margin: 0 auto;
+    }
     .username {
-        margin-left: inherit;
+        margin-left: 0;
+    }
+    .open,
+    .close {
+        display: block;
+    }
+    .burger-button {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+    }
+    .burger-button>div {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .open.hide {
+        display: none;
+    }
+    .open.hide+.close {
+        display: block;
+    }
+    .close {
+        display: none;
     }
 }
 
@@ -178,14 +238,6 @@ h3 {
     font-size: 1.2rem;
 }
 
-.connect {
-    background-color: #FFFFFF;
-    color: var(--primary);
-    padding: 0.3rem 0.5rem;
-    margin: 0 0.5rem;
-    border-radius: 0;
-}
-
 
 /* Media queries */
 
@@ -206,7 +258,6 @@ h3 {
     footer li,
     footer .logo {
         margin-bottom: 0;
-        position: inherit;
     }
     footer,
     footer ul {
@@ -224,7 +275,6 @@ h2,
 h3,
 h4,
 button,
-select,
 legend {
     font-family: "Mohave", sans-serif;
     font-weight: bold;
@@ -249,26 +299,12 @@ p {
     font-size: 18px;
 }
 
-button,
-select {
+button {
     border-radius: 0;
     text-transform: uppercase;
     font-size: 18px;
     height: auto;
     width: auto;
-}
-
-select {
-    background-color: #F08D18;
-    cursor: pointer;
-    border-color: transparent;
-}
-
-option {
-    text-transform: none;
-    color: black;
-    background-color: white;
-    font-family: "Roboto", sans-serif;
 }
 
 legend {
