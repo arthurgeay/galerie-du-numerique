@@ -275,6 +275,7 @@ h2,
 h3,
 h4,
 button,
+select,
 legend {
     font-family: "Mohave", sans-serif;
     font-weight: bold;
@@ -299,7 +300,21 @@ p {
     font-size: 18px;
 }
 
-button {
+select {
+    background-color: #F08D18;
+    cursor: pointer;
+    border-color: transparent;
+}
+
+option {
+    text-transform: none;
+    color: black;
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+button,
+select {
     border-radius: 0;
     text-transform: uppercase;
     font-size: 18px;
