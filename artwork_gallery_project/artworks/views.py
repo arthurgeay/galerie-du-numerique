@@ -59,3 +59,15 @@ def artwork_detail(request, id):
         "artworks/artwork_detail.html",
         {"artwork": artwork, "is_already_voted": is_already_voted},
     )
+
+
+def error_403(request, exception):
+    return render(request, "artworks/error.html", status=403)
+
+
+def error_404(request, exception):
+    return render(request, "artworks/404.html", status=404)
+
+
+def error_500(request):
+    return render(request, "artworks/error.html", status=500)
