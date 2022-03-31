@@ -46,7 +46,7 @@ def delete_artwork(request, artwork_id):
 @login_required()
 @permission_required("artworks.can_view")
 def view_artworks(request):
-    artwork_list = Artwork.objects.all()
+    artwork_list = Artwork.objects.all().order_by('-id')
 
     paginator = Paginator(artwork_list, 4)
     page = request.GET.get("page")
