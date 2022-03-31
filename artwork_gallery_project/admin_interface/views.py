@@ -23,7 +23,14 @@ def create_artwork(request):
 @permission_required("artworks.can_change")
 def edit_artwork(request, artwork_id):
     artwork = Artwork.objects.get(id=artwork_id)
-    form = UpdateForm(instance=artwork)
+    if request.method == 'POST':
+        form = UpdateForm(request.POST, instance=artwork)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "{} a bien été modifié.".format(form.cleaned_data['title']))
+            return redirect('view_artworks')
+    else:
+        form = UpdateForm(instance=artwork)
     return render(request, "admin_interface/edit_artwork.html", {'form': form})
 
 @login_required()
