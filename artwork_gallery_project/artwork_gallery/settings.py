@@ -32,7 +32,6 @@ CSRF_TRUSTED_ORIGINS = [env("ALLOWED_HOSTS")]
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -144,5 +143,8 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Disable default admin
+ADMIN_ENABLED = False
 
 django_heroku.settings(locals())
