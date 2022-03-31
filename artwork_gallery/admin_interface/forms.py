@@ -7,8 +7,8 @@ class CreateForm(forms.Form):
     Form for adding the artwork information.
     """
     title = forms.CharField(max_length=100)
-    artiste = forms.CharField(max_length=100)
     categorie = forms.CharField()
+    artiste = forms.CharField(max_length=100)
 
 class UpdateForm(forms.ModelForm):
     """
@@ -16,7 +16,7 @@ class UpdateForm(forms.ModelForm):
     """
     class Meta:
         model = Artwork
-        fields = '__all__'
+        fields = ['title', 'description', 'image', 'released_at', 'width', 'height', 'location', 'category', 'artist']
 
 class CreateArtistForm(forms.Form):
     """

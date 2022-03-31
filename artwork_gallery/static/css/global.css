@@ -155,6 +155,21 @@ h3 {
     border-radius: 0;
 }
 
+.create-buttons,
+#create-artwork {
+    padding: 0;
+    background-color: #546e7a;
+    border: none;
+}
+
+.create-buttons a,
+#create-artwork a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 1rem 2rem;
+}
+
 
 /* Media queries */
 
