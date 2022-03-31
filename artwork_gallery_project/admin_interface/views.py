@@ -57,6 +57,13 @@ def view_artworks(request):
 @login_required()
 @permission_required("artworks.can_add")
 def create_artist(request):
-    form = CreateArtistForm()
+    if request.method == 'POST':
+        form = CreateArtistForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "L'artiste {} a bien été crée.".format(form.cleaned_data['name']))
+            return redirect('view_artworks')
+    else:
+        form = CreateArtistForm()
     return render(request, "admin_interface/create_artist.html", {'form': form})
 
