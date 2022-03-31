@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load i18n %}
+    <article>
+        <hgroup>
+            <h1>{% trans 'Connexion' %}</h1>
+            <h2>{% trans "Votez pour votre oeuvre favorite !" %}</h2>
+        </hgroup>
+
+
+
+        <form method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit">{% trans 'Se connecter' %}</button>
+        </form>
+ 
+        <p><a href="{% url 'signup'%}"></a>       {% trans "Vous n'avez aucun compte ? Inscrivez-vous" %}</p>
+        <p><a href="{% url 'password_reset'%}">{% trans "Mot de passe oublié" %}</a></p>
+    </article>
+{% endblock content %}
