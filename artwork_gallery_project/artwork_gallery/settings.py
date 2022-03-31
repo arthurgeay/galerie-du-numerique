@@ -30,6 +30,7 @@ CSRF_TRUSTED_ORIGINS = [env("ALLOWED_HOSTS")]
 
 
 # Application definition
+LANGUAGE_CODE = 'fr'
 
 INSTALLED_APPS = [
     "django.contrib.admin",
