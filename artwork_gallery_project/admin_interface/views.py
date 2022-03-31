@@ -5,6 +5,7 @@ from django.core.paginator import Paginator
 from artworks.models import Artwork, Artist
 from django.contrib import messages
 
+
 @login_required()
 @permission_required("artworks.can_view")
 def view_artworks(request):
@@ -15,6 +16,7 @@ def view_artworks(request):
     artworks = paginator.get_page(page)
 
     return render(request, "admin_interface/view_artworks.html", {"artworks": artworks})
+
 
 @login_required()
 @permission_required("artworks.can_add")
@@ -92,21 +94,25 @@ def create_artist(request):
         form = ArtistForm()
     return render(request, "admin_interface/create_artist.html", {"form": form})
 
+
 @login_required()
 @permission_required("artworks.can_change")
 def edit_artist(request, artist_id):
     artist = get_object_or_404(Artist, id=artist_id)
 
-
     if request.method == "POST":
         form = ArtistForm(request.POST, instance=artist)
         if form.is_valid():
             form.save()
-            messages.success(request, "L'artiste {} a bien été modifié.".format(form.cleaned_data["name"]))
+            messages.success(
+                request,
+                "L'artiste {} a bien été modifié.".format(form.cleaned_data["name"]),
+            )
             return redirect("view_artists")
     else:
         form = ArtistForm(instance=artist)
     return render(request, "admin_interface/edit_artist.html", {"form": form})
+
 
 @login_required()
 @permission_required("artworks.can_delete")
