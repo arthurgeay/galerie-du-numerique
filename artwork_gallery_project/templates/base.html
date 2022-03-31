@@ -39,7 +39,9 @@
         <nav class="container-fluid" id="menu">
             <ul>
                 <li><a href="/">Accueil</a></li>
-                {% if user.is_authenticated %}
+                {% if user.is_authenticated %} {% if user.is_superuser %}
+                <li><a href="{% url 'view_artworks' %}">Admin</a></li>
+                {% endif %}
                 <li><a href="{% url 'gallery' %}">Galerie</a></li>
                 <li class="username">{{ user }}</li>
                 <li class="logout">

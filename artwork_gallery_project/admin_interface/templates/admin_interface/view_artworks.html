@@ -1,0 +1,34 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
+<h1>Liste des oeuvres</h1>
+<div class="admin-buttons">
+    <button class="create-buttons"><a class="create" href="{% url 'create_artwork' %}">Créer une oeuvre</a></button>
+    <button class="create-buttons list-button"><a class="create list" href="{% url 'view_artists' %}">Liste des artistes</a></button>
+</div>
+<div class="artworks-content">
+    <ul class="artworks-list">
+        {% for artwork in artworks %}
+        <li class="artworks-item">
+            <div class="artwork-img">
+                <img src="{{ artwork.image }}" alt="">
+            </div>
+            <div class="artwork-infos">
+                <h2 class="artwork-title">{{ artwork.title }}</h2>
+                <p class="artwork-author">{{ artwork.artist }}</p>
+            </div>
+            <div class="artwork-actions">
+                <a href="{% url 'edit_artwork' artwork.id %}"><button class="artwork-actions-update">Modifier</button></a>
+                <a href="{% url 'delete_artwork' artwork.id %}"><button class="artwork-actions-delete">Supprimer</button></a>
+            </div>
+        </li>
+        {% empty %}
+            <p class="alert info">Il semblerait qu'il n'y ait aucune oeuvre pour le moment.</p>
+        {% endfor %}
+    </ul>
+</div>
+<div class="pagination-buttons">
+    {% if artworks.has_previous %}
+    <a href="?page={{ artworks.previous_page_number }}" role="button" class="previous">Précédent</a> {% endif %} {% if artworks.has_next %}
+    <a href="?page={{ artworks.next_page_number }}" role="button" class="next">Suivant</a> {% endif %}
+</div>
+{% endblock content %}

@@ -31,8 +31,9 @@ CSRF_TRUSTED_ORIGINS = [env("ALLOWED_HOSTS")]
 
 # Application definition
 
+ADMIN_ENABLED = False
+
 INSTALLED_APPS = [
-    "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -41,7 +42,11 @@ INSTALLED_APPS = [
     "authentication",
     "artworks",
     "polls",
+    "admin_interface",
 ]
+
+if ADMIN_ENABLED is True:
+    INSTALLED_APPS.append("django.contrib.admin")
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -143,5 +148,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 
 django_heroku.settings(locals())

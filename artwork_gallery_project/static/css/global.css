@@ -129,6 +129,20 @@ nav li:not(.logout) a {
     object-fit: contain;
 }
 
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous,
+.next {
+    display: block;
+}
+
+.next {
+    margin-left: auto;
+}
+
 @media (min-width: 600px) {
     header {
         flex-direction: row;
@@ -256,6 +270,83 @@ h2 {
 
 h3 {
     font-size: 1.2rem;
+}
+
+.connect {
+    background-color: #FFFFFF;
+    color: var(--primary);
+    padding: 0.3rem 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 0;
+}
+
+.create-buttons {
+    padding: 0;
+    background-color: #546e7a;
+    border: none;
+    position: relative;
+}
+
+.create-buttons a {
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 1rem 2rem;
+    padding-left: 2.5rem;
+}
+
+.admin-home {
+    position: relative;
+}
+
+.admin-home a {
+    font-size: .8rem;
+    padding: 1rem;
+    padding-left: 2.5rem;
+}
+
+.admin-home::after {
+    content: "◀";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+.admin-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.create::after {
+    content: "➕";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+    filter: contrast(0) brightness(200%);
+}
+
+.create.list::after {
+    content: "📄";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+    filter: contrast(0) brightness(200%);
+}
+
+.list-button {
+    background-color: var(--primary);
 }
 
 
