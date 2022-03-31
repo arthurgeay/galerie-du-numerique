@@ -1,0 +1,12 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
+<h1>Suppression d'un artiste</h1>
+<p>Êtes-vous sûr de vouloir supprimer {{ artwork.name }} ?</p>
+<button class="create-buttons admin-home"><a href="{% url 'view_artworks' %}">Revenir à l'administration</a></button>
+<div class="artist-content">
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Supprimer" />
+    </form>
+</div>
+{% endblock content %}

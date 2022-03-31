@@ -38,9 +38,19 @@ class GalleryTest(TestCase):
             username=self.user["username"], password=self.user["password"]
         )
 
-        response = self.client.get(self.gallery_url, {"category": 1})
+        category = Category.objects.create(name="Category 1")
+        category2 = Category.objects.create(name="Category 2")
+        artist = Artist.objects.create(name="Artist 1")
+        artist2 = Artist.objects.create(name="Artist 2")
+
+        Artwork.objects.create(title="Artwork 1", category=category, artist=artist)
+        Artwork.objects.create(title="Artwork 2", category=category2, artist=artist2)
+
+        response = self.client.get(self.gallery_url, {"category": category.id})
         self.assertEqual(response.resolver_match.url_name, "gallery")
         self.assertContains(response, "Réinitialiser les filtres")
+        self.assertContains(response, "Artwork 1")
+        self.assertNotContains(response, "Artwork 2")
 
     def test_can_sort_artworks_by_asc(self):
         self.client.login(
@@ -65,9 +75,21 @@ class GalleryTest(TestCase):
             username=self.user["username"], password=self.user["password"]
         )
 
-        response = self.client.get(self.gallery_url, {"category": 1, "sort": "ASC"})
+        category = Category.objects.create(name="Category 1")
+        category2 = Category.objects.create(name="Category 2")
+        artist = Artist.objects.create(name="Artist 1")
+        artist2 = Artist.objects.create(name="Artist 2")
+
+        Artwork.objects.create(title="Artwork 1", category=category, artist=artist)
+        Artwork.objects.create(title="Artwork 2", category=category2, artist=artist2)
+
+        response = self.client.get(
+            self.gallery_url, {"category": category.id, "sort": "ASC"}
+        )
         self.assertEqual(response.resolver_match.url_name, "gallery")
         self.assertContains(response, "Réinitialiser les filtres")
+        self.assertContains(response, "Artwork 1")
+        self.assertNotContains(response, "Artwork 2")
 
 
 class ArtworkTest(TestCase):

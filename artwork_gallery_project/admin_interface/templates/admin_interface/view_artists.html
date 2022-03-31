@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}" /> {% endblock links %} {% block content %}
+<h1>Liste des artistes</h1>
+<div class="admin-buttons">
+    <button class="create-buttons"><a class="create" href="{% url 'create_artist' %}">Créer un artiste</a></button>
+    <button class="create-buttons list-button"><a class="create list" href="{% url 'view_artworks' %}">Liste des oeuvres</a></button>
+</div>
+<div class="artworks-content">
+    <ul class="artworks-list">
+        {% for artist in artists %}
+        <li class="artworks-item">
+            <div class="artwork-img">
+                {% if artist.image %}
+                    <img src="{{ artist.image }}" alt="Image de {{ artist.name }}" />
+                {% else %}
+                    <img src="{% static 'images/404.png' %}" alt="Image introuvable" />
+                {% endif %}
+            </div>
+            <div class="artwork-infos">
+                <h2 class="artwork-title">{{ artist.name }}</h2>
+                <p class="artwork-author">{{ artist.birthday|default_if_none:"" }} - {{ artist.deathday|default_if_none:"" }}</p>
+            </div>
+            <div class="artwork-actions">
+                <a href="{% url 'edit_artist' artist.id %}"><button class="artwork-actions-update">Modifier</button></a>
+                <a href="{% url 'delete_artist' artist.id %}"><button class="artwork-actions-delete">Supprimer</button></a>
+            </div>
+        </li>
+        {% empty %}
+            <p class="alert info">Il semblerait qu'il n'y ait aucun artiste pour le moment.</p>
+        {% endfor %}
+    </ul>
+</div>
+<div class="pagination-buttons">
+    {% if artists.has_previous %}
+    <a href="?page={{ artists.previous_page_number }}" role="button" class="previous">Précédent</a> {% endif %} {% if artworks.has_next %}
+    <a href="?page={{ artists.next_page_number }}" role="button" class="next">Suivant</a> {% endif %}
+</div>
+{% endblock content %}
