@@ -44,9 +44,9 @@ class UpdateForm(forms.ModelForm):
         }
 
 
-class CreateArtistForm(forms.ModelForm):
+class ArtistForm(forms.ModelForm):
     """
-    Form for adding the artist information.
+    Form for adding/modify the artist information.
     """
 
     class Meta:

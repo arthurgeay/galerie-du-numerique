@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
-from admin_interface.forms import CreateForm, UpdateForm, CreateArtistForm
+from admin_interface.forms import CreateForm, UpdateForm, ArtistForm
 from django.core.paginator import Paginator
 from artworks.models import Artwork, Artist
 from django.contrib import messages
@@ -70,7 +70,7 @@ def view_artworks(request):
 @permission_required("artworks.can_add")
 def create_artist(request):
     if request.method == "POST":
-        form = CreateArtistForm(request.POST)
+        form = ArtistForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(
@@ -79,9 +79,23 @@ def create_artist(request):
             )
             return redirect("view_artworks")
     else:
-        form = CreateArtistForm()
+        form = ArtistForm()
     return render(request, "admin_interface/create_artist.html", {"form": form})
 
+@login_required()
+@permission_required("artworks.can_change")
+def edit_artist(request, artist_id):
+    artist = Artist.objects.get(id=artist_id)
+
+    if request.method == "POST":
+        form = ArtistForm(request.POST, instance=artist)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "L'artiste {} a bien été modifié.".format(form.cleaned_data["name"]))
+            return redirect("view_artworks")
+    else:
+        form = ArtistForm(instance=artist)
+    return render(request, "admin_interface/edit_artist.html", {"form": form})
 
 @login_required()
 @permission_required("artworks.can_delete")
