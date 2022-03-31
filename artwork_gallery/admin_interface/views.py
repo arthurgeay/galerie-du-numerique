@@ -1,14 +1,22 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from admin_interface.forms import CreateForm, UpdateForm, CreateArtistForm
 from django.core.paginator import Paginator
 from artworks.models import Artwork, Artist
+from django.contrib import messages
 
 
 @login_required()
 @permission_required("artworks.can_add")
 def create_artwork(request):
-    form = CreateForm()
+    if request.method == 'POST':
+        form = CreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "{} a bien été sauvegardé.".format(form.cleaned_data['title']))
+            return redirect('view_artworks')
+    else:
+        form = CreateForm()
     return render(request,  "admin_interface/create_artwork.html", {'form': form})
 
 @login_required()
