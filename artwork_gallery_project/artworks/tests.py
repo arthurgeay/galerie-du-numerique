@@ -33,6 +33,42 @@ class GalleryTest(TestCase):
         response = self.client.get(self.gallery_url)
         self.assertEqual(response.resolver_match.url_name, "gallery")
 
+    def test_can_filter_artworks_by_category(self):
+        self.client.login(
+            username=self.user["username"], password=self.user["password"]
+        )
+
+        response = self.client.get(self.gallery_url, {"category": 1})
+        self.assertEqual(response.resolver_match.url_name, "gallery")
+        self.assertContains(response, "Réinitialiser les filtres")
+
+    def test_can_sort_artworks_by_asc(self):
+        self.client.login(
+            username=self.user["username"], password=self.user["password"]
+        )
+
+        response = self.client.get(self.gallery_url, {"sort": "ASC"})
+        self.assertEqual(response.resolver_match.url_name, "gallery")
+        self.assertContains(response, "Réinitialiser les filtres")
+
+    def test_can_sort_artworks_by_desc(self):
+        self.client.login(
+            username=self.user["username"], password=self.user["password"]
+        )
+
+        response = self.client.get(self.gallery_url, {"sort": "DESC"})
+        self.assertEqual(response.resolver_match.url_name, "gallery")
+        self.assertContains(response, "Réinitialiser les filtres")
+
+    def test_can_filter_and_sort_artworks(self):
+        self.client.login(
+            username=self.user["username"], password=self.user["password"]
+        )
+
+        response = self.client.get(self.gallery_url, {"category": 1, "sort": "ASC"})
+        self.assertEqual(response.resolver_match.url_name, "gallery")
+        self.assertContains(response, "Réinitialiser les filtres")
+
 
 class ArtworkTest(TestCase):
     def setUp(self):

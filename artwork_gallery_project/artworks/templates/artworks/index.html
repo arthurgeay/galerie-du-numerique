@@ -1,53 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block links %} {% load static %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}" /> {% endblock links %} {% block content %}
+<h1>Galerie</h1>
+{% include "presentation.html" %}
+<div class="separator"></div>
 
-{% block links %}
-{% load static %}
-    <link rel="stylesheet" href="{% static 'css/gallery.css' %}" />
-{% endblock links %}
+<div class="controls">
+    <button id="sort">
+        Trier
+            {% if request.GET.sort == 'ASC' %}
+                <img src="{% static 'images/bi_sort-numeric-up.png' %}" alt="">
+            {% else %}
+                <img src="{% static 'images/bi_sort-numeric-down.png' %}" alt="">
+            {% endif %}
+    </button>
 
-{% block content %}
-    <h1>Galerie</h1>
-    {% include "presentation.html" %}
-    <div class="separator"></div>
-    {% if artworks|length > 0 %}
-        <div class="controls">
-            <button id="sort">Trier</button>
-            <button id="filter">Filtrer</button>
-        </div>
+    <select id="filter" name="category">
+        <option value="" selected>Filtrer</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+
+    {% if request.GET.sort or request.GET.category %}
+        <a href="{% url 'gallery' %}">
+            <button>
+                Réinitialiser les filtres
+            </button>
+        </a>
     {% endif %}
+</div>
 
-    <div class="gallery">
-        <ul class="art-list">
-            {% for artwork in artworks %}
-            <li class="art-item">
-                <a href="{% url 'artwork_detail' artwork.id %}">
-                    <div class="art-item-image">
-                        {% if artwork.image %}
-                            <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}"/>
-                        {% else %}
-                            <img src="{% static 'images/404.png' %}" alt="Image introuvable"/>
-                        {% endif %}
-                    </div>
-                    <div class="art-item-infos">
-                        <p class="art-item-title">{{ artwork.title }}</p>
-                        <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
-                        <p class="art-item-author">{{ artwork.artist.name }}</p>
-                    </div>
-                </a>
-            </li>
-            {% empty %}
-            <p class="alert info">Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
-            {% endfor %}
-        </ul>
+<div class="gallery">
+    <ul class="art-list">
+        {% for artwork in artworks %}
+        <li class="art-item">
+            <a href="{% url 'artwork_detail' artwork.id %}">
+                <div class="art-item-image">
+                    {% if artwork.image %}
+                    <img src="{{ artwork.image }}" alt="Image de {{ artwork.title }}" /> {% else %}
+                    <img src="{% static 'images/404.png' %}" alt="Image introuvable" /> {% endif %}
+                </div>
+                <div class="art-item-infos">
+                    <p class="art-item-title">{{ artwork.title }}</p>
+                    <p class="art-item-date">{{ artwork.released_at|default_if_none:'Donnée inconnue' }}</p>
+                    <p class="art-item-author">{{ artwork.artist.name }}</p>
+                    <p class="art-item-votes">{{ artwork.votes.all.count }} vote{% if artwork.votes.all.count > 1 %}s{% endif %}</p>
+                </div>
+            </a>
+        </li>
+        {% empty %}
+        <p class="alert info">Il semblerait qu'il n'y ait aucune oeuvre de disponible pour le moment. Revenez un peu plus tard!</p>
+        {% endfor %}
+    </ul>
 
-    </div>
-     <div class="pagination">
-        {% if artworks.has_previous %}
-            <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a>
-         {% endif %}
-
-        {% if artworks.has_next %}
-            <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a>
-        {% endif %}
-    </div>
+</div>
+<div class="pagination">
+    {% if artworks.has_previous %}
+    <a href="?page={{ artworks.previous_page_number }}" role="button">Précédent</a> {% endif %} {% if artworks.has_next %}
+    <a href="?page={{ artworks.next_page_number }}" role="button">Suivant</a> {% endif %}
+</div>
+<script src="{% static 'js/sortAndFilterArtworks.js' %}"></script>
 {% endblock content %}
