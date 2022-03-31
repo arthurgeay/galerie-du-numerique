@@ -98,6 +98,20 @@ nav a {
     object-fit: contain;
 }
 
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous,
+.next {
+    display: block;
+}
+
+.next {
+    margin-left: auto;
+}
+
 @media (min-width: 600px) {
     header {
         flex-direction: row;
@@ -282,7 +296,8 @@ strong {
     text-align: right;
 }
 
-.alert, .errorlist {
+.alert,
+.errorlist {
     padding: 1rem;
     margin-bottom: 2rem;
 }
@@ -291,7 +306,8 @@ strong {
     background: #2e7d32;
 }
 
-.alert.error, .errorlist {
+.alert.error,
+.errorlist {
     background: #a41515;
 }
 
