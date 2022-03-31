@@ -31,6 +31,8 @@ CSRF_TRUSTED_ORIGINS = [env("ALLOWED_HOSTS")]
 
 # Application definition
 
+ADMIN_ENABLED = False
+
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -42,6 +44,9 @@ INSTALLED_APPS = [
     "polls",
     "admin_interface"
 ]
+
+if ADMIN_ENABLED is True:
+    INSTALLED_APPS.append('django.contrib.admin')
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -144,7 +149,6 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Disable default admin
-ADMIN_ENABLED = False
+
 
 django_heroku.settings(locals())
