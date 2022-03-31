@@ -7,5 +7,6 @@ venv/
 *.pot
 *.pyc
 __pycache__
+.vscode
 staticfiles
 .coverage

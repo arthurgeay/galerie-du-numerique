@@ -30,6 +30,7 @@ CSRF_TRUSTED_ORIGINS = [env("ALLOWED_HOSTS")]
 
 
 # Application definition
+LANGUAGE_CODE = 'fr'
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = "artwork_gallery.urls"
@@ -125,11 +127,14 @@ EMAIL_HOST_PASSWORD = str(os.getenv("EMAIL_PASSWORD"))
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = "fr-fr"
-
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+    os.path.join(BASE_DIR, "mysite", "locale"),
+)
 TIME_ZONE = "UTC"
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
 
