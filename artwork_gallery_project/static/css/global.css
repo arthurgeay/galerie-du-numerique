@@ -95,7 +95,6 @@ nav a {
 
 nav li {
     font-family: "Roboto", sans-serif;
-    font-size: 18px;
 }
 
 nav li:not(.logout) a {
@@ -109,7 +108,20 @@ nav li:not(.logout) a {
 }
 
 .username {
-    margin-left: 100px;
+    background-color: white;
+    color: var(--primary);
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    position: relative;
+    padding-left: 2rem;
+}
+
+.username::after {
+    content: '👨‍💼';
+    position: absolute;
+    top: 50%;
+    left: .5rem;
+    transform: translateY(-50%);
 }
 
 .logo {
@@ -153,6 +165,7 @@ nav li:not(.logout) a {
     .header-top {
         position: relative;
         z-index: 5;
+        width: 100%;
     }
     header .container-fluid,
     header nav {
@@ -170,6 +183,10 @@ nav li:not(.logout) a {
     header ul {
         margin: 0 auto;
     }
+    header {
+        position: fixed;
+        z-index: 20;
+    }
     .username {
         margin-left: 0;
     }
@@ -177,8 +194,11 @@ nav li:not(.logout) a {
     .close {
         display: block;
     }
+    .logo {
+        margin: 0 auto;
+    }
     .burger-button {
-        position: fixed;
+        position: absolute;
         top: 1rem;
         right: 1rem;
     }
