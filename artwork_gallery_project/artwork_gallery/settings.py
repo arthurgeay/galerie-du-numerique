@@ -1,6 +1,6 @@
 import os
 
-# import django_heroku
+import django_heroku
 from pathlib import Path
 import environ
 
@@ -52,8 +52,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
-INTERNAL_IPS = ["127.0.0.1"]
 
 ROOT_URLCONF = "artwork_gallery.urls"
 
@@ -146,4 +144,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())

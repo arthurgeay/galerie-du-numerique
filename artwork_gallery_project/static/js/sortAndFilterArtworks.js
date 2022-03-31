@@ -8,13 +8,11 @@ const updateURLPath = () => {
 
 const watchEventSort = (url, sortElement) => {
   return sortElement.addEventListener("click", (event) => {
-    console.log("watching sort");
     updateSortParam(url);
   });
 };
 
 const watchEventCategory = (url, selectElement) => {
-  console.log(selectElement);
   return selectElement.addEventListener("change", (event) => {
     updateCategoryParam(url, event);
   });
@@ -22,7 +20,7 @@ const watchEventCategory = (url, selectElement) => {
 
 const updateSortParam = (url) => {
   query_sort = url.get("sort");
-  updateSortValue(query_sort) && url.set("sort", updateSortValue(query_sort));
+  url.set("sort", updateSortValue(query_sort));
   window.location.href = `?${url.toString()}`;
 };
 
@@ -32,8 +30,9 @@ const updateCategoryParam = (url, event) => {
     url.delete("category");
   } else {
     url.set("category", parseInt(event.target.value));
-    window.location.href = `?${url.toString()}`;
   }
+
+  window.location.href = `?${url.toString()}`;
 };
 
 let updateSortValue = (sort_value) => {

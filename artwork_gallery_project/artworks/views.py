@@ -10,12 +10,15 @@ from .models import Artwork
 def gallery(request):
     filter_category = request.GET.get("category")
     sort_artworks = request.GET.get("sort")
+
     artwork_list = (
         Artwork.objects.annotate(votes_count=Count("votes"))
         .order_by("-votes_count")
         .all()
     )
+
     categories = Category.objects.order_by("id").all()
+
     if sort_artworks and sort_artworks == "ASC":
         artwork_list = (
             Artwork.objects.annotate(votes_count=Count("votes"))

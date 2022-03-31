@@ -6,15 +6,28 @@
 
 <div class="controls">
     <button id="sort">
-        Trier<img src="{% static 'images/bi_sort-numeric-down.png' %}" alt="">
+        Trier
+            {% if request.GET.sort == 'ASC' %}
+                <img src="{% static 'images/bi_sort-numeric-up.png' %}" alt="">
+            {% else %}
+                <img src="{% static 'images/bi_sort-numeric-down.png' %}" alt="">
+            {% endif %}
     </button>
 
     <select id="filter" name="category">
         <option value="" selected>Filtrer</option>
         {% for category in categories %}
-        <option value="{{ category.id }}">{{ category.name }}</option>
+            <option value="{{ category.id }}">{{ category.name }}</option>
         {% endfor %}
     </select>
+
+    {% if request.GET.sort or request.GET.category %}
+        <a href="{% url 'gallery' %}">
+            <button>
+                Réinitialiser les filtres
+            </button>
+        </a>
+    {% endif %}
 </div>
 
 <div class="gallery">
