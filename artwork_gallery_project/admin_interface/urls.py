@@ -9,4 +9,7 @@ urlpatterns = [
     path(
         "delete-artwork/<int:artwork_id>", views.delete_artwork, name="delete_artwork"
     ),
+    path(
+        "delete-artist/<int:artist_id>", views.delete_artist, name="delete_artist"
+    ),
 ]
