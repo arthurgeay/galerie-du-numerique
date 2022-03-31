@@ -10,11 +10,15 @@
         {% for artist in artists %}
         <li class="artworks-item">
             <div class="artwork-img">
-                <img src="{{ artist.image }}" alt="">
+                {% if artist.image %}
+                    <img src="{{ artist.image }}" alt="Image de {{ artist.name }}" />
+                {% else %}
+                    <img src="{% static 'images/404.png' %}" alt="Image introuvable" />
+                {% endif %}
             </div>
             <div class="artwork-infos">
                 <h2 class="artwork-title">{{ artist.name }}</h2>
-                <p class="artwork-author">{{ artist.birthday }} - {{ artist.deathday }}</p>
+                <p class="artwork-author">{{ artist.birthday|default_if_none:"" }} - {{ artist.deathday|default_if_none:"" }}</p>
             </div>
             <div class="artwork-actions">
                 <a href="{% url 'edit_artist' artist.id %}"><button class="artwork-actions-update">Modifier</button></a>

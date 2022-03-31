@@ -14,11 +14,29 @@
 
 <body>
     <header>
-        <div class="logo">
-            {% load static %}
-            <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+        <div class="header-top">
+            <div class="logo">
+                {% load static %}
+                <img src="{% static 'images/Logo.png' %}" alt="La Galerie du Numérique">
+            </div>
+            <div class="burger-button" id="open-burger">
+                <div class="open">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="30px" height="26px" viewBox="0 0 30 26" enable-background="new 0 0 30 26" xml:space="preserve">
+                        <rect fill="#FFFFFF" width="30" height="3" />
+                        <rect y="11" fill="#FFFFFF" width="30" height="3" />
+                        <rect y="23" fill="#FFFFFF" width="30" height="3" />
+                    </svg>
+                </div>
+                <div class="close">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <line x1="0" y1="0" x2="30" y2="30" stroke="white" stroke-width="3" />
+                        <line x1="30" y1="0" x2="0" y2="30" stroke="white" stroke-width="3" />
+                    </svg>
+                </div>
+
+            </div>
         </div>
-        <nav class="container-fluid">
+        <nav class="container-fluid" id="menu">
             <ul>
                 <li><a href="/">Accueil</a></li>
                 {% if user.is_authenticated %} {% if user.is_superuser %}
@@ -59,6 +77,12 @@
             </li>
         </ul>
     </footer>
+    <script>
+        document.getElementById("open-burger").addEventListener("click", function() {
+            document.getElementById("menu").classList.toggle("menu-open");
+            document.querySelector(".open").classList.toggle("hide");
+        });
+    </script>
 </body>
 
 </html>
