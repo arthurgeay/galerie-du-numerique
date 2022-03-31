@@ -93,6 +93,25 @@ nav a {
     color: #FFFFFF;
 }
 
+nav li {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+}
+
+nav li:not(.logout) a {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.logout img {
+    width: 20px;
+    margin: 5px;
+}
+
+.username {
+    margin-left: 100px;
+}
+
 .logo {
     max-width: 10rem;
     object-fit: contain;
@@ -117,6 +136,9 @@ nav a {
 @media (max-width: 600px) {
     .container-fluid {
         width: auto;
+    }
+    .username {
+        margin-left: inherit;
     }
 }
 
@@ -246,7 +268,8 @@ strong {
     text-align: right;
 }
 
-.alert, .errorlist {
+.alert,
+.errorlist {
     padding: 1rem;
     margin-bottom: 2rem;
 }
@@ -255,7 +278,8 @@ strong {
     background: #2e7d32;
 }
 
-.alert.error, .errorlist {
+.alert.error,
+.errorlist {
     background: #a41515;
 }
 
