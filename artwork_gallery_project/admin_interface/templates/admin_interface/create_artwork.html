@@ -5,7 +5,7 @@
 <div class="artworks-content">
     <form action="" method="post" enctype="multipart/form-data">
         {% csrf_token %}{{form}}
-        <button class="create-buttons"><a href="/admin/create-artist">Créer un artiste</a></button>
+        <button class="create-buttons"><a href="/admin/create-artist" class="create">Créer un artiste</a></button>
         <input type="submit" value="Ajouter" aria-label="Ajouter l'oeuvre">
     </form>
 </div>

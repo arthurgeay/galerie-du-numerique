@@ -178,19 +178,19 @@ h3 {
     border-radius: 0;
 }
 
-.create-buttons,
-#create-artwork {
+.create-buttons {
     padding: 0;
     background-color: #546e7a;
     border: none;
+    position: relative;
 }
 
-.create-buttons a,
-#create-artwork a {
+.create-buttons a {
     width: 100%;
     height: 100%;
     display: block;
     padding: 1rem 2rem;
+    padding-left: 2.5rem;
 }
 
 .admin-home {
@@ -212,6 +212,18 @@ h3 {
     top: 25%;
     left: 1rem;
     transform: translateY(-50%);
+}
+
+.create::after {
+    content: "➕";
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 25%;
+    left: 1rem;
+    transform: translateY(-50%);
+    filter: contrast(0) brightness(200%);
 }
 
 
