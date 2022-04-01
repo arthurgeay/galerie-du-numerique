@@ -1,5 +1,3 @@
-import urllib.parse
-
 from artworks.services.client import ApiClient
 
 
@@ -22,7 +20,7 @@ class WikiArtClient(ApiClient):
         uri = self.generate_uri(
             "Api/2/PaintingSearch",
             {
-                "term": urllib.parse.quote(artwork_name),
+                "term": artwork_name,
             },
         )
         return super().get_resource(uri)
